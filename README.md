@@ -77,15 +77,7 @@ print(result.report.status)  # "pass"
 |:---:|:---:|:---:|
 | ![contour](gallery/showcase/contour.png) | ![waterfall](gallery/showcase/waterfall.png) | ![dumbbell](gallery/showcase/dumbbell.png) |
 
-| Bullet | Supply-Demand Balance | Small Multiples |
-|:---:|:---:|:---:|
-| ![bullet](gallery/showcase/bullet.png) | ![supply_demand](gallery/showcase/supply_demand.png) | ![small_multiples](gallery/showcase/small_multiples.png) |
-
 ### Multi-panel Figures / 多面板组合图
-
-| 2-panel (1x2) / 2 面板 | 3-panel (1x3) / 3 面板 |
-|:---:|:---:|
-| ![2panel](gallery/showcase/multipanel_2panel.png) | ![3panel](gallery/showcase/multipanel_3panel.png) |
 
 | 4-panel (2x2) / 4 面板 | 6-panel (2x3) / 6 面板 |
 |:---:|:---:|
