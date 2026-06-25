@@ -1,19 +1,6 @@
-import importlib.util
 import unittest
-from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[1]
-REVIEW = ROOT / "review"
-
-
-def load_review_module():
-    spec = importlib.util.spec_from_file_location(
-        "chart_reviewer", REVIEW / "chart_reviewer.py"
-    )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+import acadp._reviewer as reviewer
 
 
 class ChartReviewerRecipeFitTests(unittest.TestCase):
@@ -44,31 +31,28 @@ class ChartReviewerRecipeFitTests(unittest.TestCase):
         return metadata
 
     def test_threshold_recipe_matches_threshold_paper_purpose(self):
-        reviewer = load_review_module()
-        review = reviewer.review_figure_metadata(
+        result = reviewer.review(
             self.metadata_for("bullet_threshold", figure_role="constraint_compliance")
         )
 
-        self.assertEqual(review["overall_status"], "pass")
-        issues = " ".join(review["major_issues"] + review["minor_issues"])
+        self.assertEqual(result.status, "pass")
+        issues = " ".join(result.major_issues + result.minor_issues)
         self.assertNotIn("recipe", issues.lower())
 
     def test_wrong_recipe_for_threshold_purpose_requires_revision(self):
-        reviewer = load_review_module()
-        review = reviewer.review_figure_metadata(
+        result = reviewer.review(
             self.metadata_for("dumbbell_comparison", plot_type="dotplot")
         )
 
-        self.assertEqual(review["overall_status"], "revise")
-        issues = " ".join(review["major_issues"])
+        self.assertEqual(result.status, "revise")
+        issues = " ".join(result.major_issues)
         self.assertTrue("recipe" in issues.lower() or "表达范式" in issues)
 
     def test_unknown_recipe_id_requires_revision(self):
-        reviewer = load_review_module()
-        review = reviewer.review_figure_metadata(self.metadata_for("made_up_recipe"))
+        result = reviewer.review(self.metadata_for("made_up_recipe"))
 
-        self.assertEqual(review["overall_status"], "revise")
-        self.assertIn("recipe", " ".join(review["major_issues"]).lower())
+        self.assertEqual(result.status, "revise")
+        self.assertIn("recipe", " ".join(result.major_issues).lower())
 
 
 if __name__ == "__main__":

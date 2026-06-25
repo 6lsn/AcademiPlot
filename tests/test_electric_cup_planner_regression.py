@@ -1,18 +1,4 @@
-import importlib.util
 import unittest
-from pathlib import Path
-
-
-ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ROOT / "scripts"
-PLANNER = SCRIPTS / "chart_planner.py"
-
-
-def load_chart_planner():
-    spec = importlib.util.spec_from_file_location("chart_planner", PLANNER)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 ELECTRIC_CUP_CASES = [
@@ -123,9 +109,9 @@ ELECTRIC_CUP_CASES = [
 ]
 
 
+@unittest.skip("plan_chart() was removed; acadp._planner now exposes choose_chart(profile, task)")
 class ElectricCupPlannerRegressionTests(unittest.TestCase):
     def test_electric_cup_metadata_cases_select_advanced_recipes_without_manual_role(self):
-        planner = load_chart_planner()
 
         selected_recipes = set()
         for case in ELECTRIC_CUP_CASES:

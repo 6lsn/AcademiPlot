@@ -1,4 +1,3 @@
-import importlib.util
 import tempfile
 import unittest
 from pathlib import Path
@@ -6,24 +5,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-
-ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ROOT / "scripts"
-
-
-def load_data_profiler():
-    profiler_path = SCRIPTS / "data_profiler.py"
-    if not profiler_path.exists():
-        raise AssertionError("Expected scripts/data_profiler.py to exist")
-    spec = importlib.util.spec_from_file_location("data_profiler", profiler_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+import acadp._profiler as profiler
 
 
 class DataProfilerTests(unittest.TestCase):
     def test_profiles_dataframe_with_modeling_semantics(self):
-        profiler = load_data_profiler()
         df = pd.DataFrame(
             {
                 "时段(h)": [0, 1, 2, 3],
@@ -53,7 +39,6 @@ class DataProfilerTests(unittest.TestCase):
         self.assertTrue(profile["plotting_hints"]["has_time_axis"])
 
     def test_profiles_csv_path_with_utf8_columns(self):
-        profiler = load_data_profiler()
         df = pd.DataFrame(
             {
                 "储能容量(MWh)": [0, 15, 30, 45],
@@ -79,7 +64,6 @@ class DataProfilerTests(unittest.TestCase):
         self.assertTrue(profile["plotting_hints"]["has_optimization_surface_candidates"])
 
     def test_profiles_excel_path_and_sheet_name(self):
-        profiler = load_data_profiler()
         df = pd.DataFrame(
             {
                 "方案": ["A", "B", "C"],

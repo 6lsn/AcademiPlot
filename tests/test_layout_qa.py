@@ -1,32 +1,7 @@
-import importlib.util
-import json
-import subprocess
-import sys
-import tempfile
 import unittest
-from pathlib import Path
-
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 
 
-ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ROOT / "scripts"
-LAYOUT_QA = SCRIPTS / "layout_qa.py"
-sys.path.insert(0, str(SCRIPTS))
-
-from utf8_io import utf8_subprocess_env
-
-
-def load_layout_qa():
-    spec = importlib.util.spec_from_file_location("layout_qa", LAYOUT_QA)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
+@unittest.skip("scripts/layout_qa.py was deleted in v0.2.0 architecture unification")
 class LayoutQATests(unittest.TestCase):
     def tearDown(self):
         plt.close("all")

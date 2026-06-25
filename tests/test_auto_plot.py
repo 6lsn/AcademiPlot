@@ -23,6 +23,6 @@ def test_revise_metadata_fixes_caption():
     from acadp._reviewer import ReviewResult
     meta = {"caption": "", "variables": {}, "axis_labels": {"x": "year", "y": "gdp"}}
     r = ReviewResult(suggested_caption="GDP trend over years")
-    revised, changes = revise_metadata(meta, r)
+    revised, changes, blocked = revise_metadata(meta, r)
     assert revised["caption"] == "GDP trend over years"
     assert len(changes) > 0
