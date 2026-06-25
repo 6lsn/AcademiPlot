@@ -102,3 +102,67 @@ def test_stacked_bar():
     ax = stacked_bar(["Q1", "Q2"], {"A": [10, 20], "B": [15, 25]})
     assert isinstance(ax, Axes)
     plt.close("all")
+
+
+# ---- boxplot -----------------------------------------------------------------
+
+def test_boxplot_returns_axes():
+    ax = boxplot(data=[[1, 2, 3, 4, 5], [2, 3, 4, 5, 6]])
+    assert isinstance(ax, Axes)
+    plt.close("all")
+
+
+def test_boxplot_groupby():
+    df = pd.DataFrame({
+        "val": [10, 20, 30, 40, 50, 60],
+        "grp": ["A", "A", "A", "B", "B", "B"],
+    })
+    ax = boxplot(data=df, y="val", groupby="grp", title="Grouped Box")
+    assert isinstance(ax, Axes)
+    # Verify patches (boxes) were created with face colors
+    patches = ax.patches
+    assert len(patches) >= 2, f"Expected >=2 patches for 2 groups, got {len(patches)}"
+    plt.close("all")
+
+
+# ---- violinplot --------------------------------------------------------------
+
+def test_violinplot_returns_axes():
+    np.random.seed(42)
+    data = [np.random.randn(100), np.random.randn(100) + 1]
+    ax = violinplot(data=data)
+    assert isinstance(ax, Axes)
+    plt.close("all")
+
+
+def test_violinplot_groupby():
+    df = pd.DataFrame({
+        "val": np.concatenate([np.random.randn(50), np.random.randn(50) + 2]),
+        "grp": ["A"] * 50 + ["B"] * 50,
+    })
+    ax = violinplot(data=df, y="val", groupby="grp")
+    assert isinstance(ax, Axes)
+    plt.close("all")
+
+
+# ---- histogram ---------------------------------------------------------------
+
+def test_histogram_returns_axes():
+    np.random.seed(42)
+    ax = histogram(np.random.randn(200))
+    assert isinstance(ax, Axes)
+    plt.close("all")
+
+
+def test_histogram_kde():
+    np.random.seed(42)
+    data = np.random.randn(500)
+    ax = histogram(data, bins=20, kde=True, title="Histogram with KDE")
+    assert isinstance(ax, Axes)
+    # KDE overlay uses a twinx axis, so the figure should have 2 axes
+    fig = ax.figure
+    assert len(fig.get_axes()) == 2, "Expected 2 axes (hist + KDE twin)"
+    # The twin axis should have at least one line (the KDE curve)
+    twin_ax = fig.get_axes()[1]
+    assert len(twin_ax.lines) >= 1, "Expected KDE line on twin axis"
+    plt.close("all")
