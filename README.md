@@ -77,7 +77,7 @@ print(result.report.status)  # "pass"
 |:---:|:---:|:---:|
 | ![contour](gallery/showcase/contour.png) | ![waterfall](gallery/showcase/waterfall.png) | ![dumbbell](gallery/showcase/dumbbell.png) |
 
-| Bullet / 子弹图 | Supply-Demand / 供需平衡 | Small Multiples / 小多图 |
+| Bullet | Supply-Demand Balance | Small Multiples |
 |:---:|:---:|:---:|
 | ![bullet](gallery/showcase/bullet.png) | ![supply_demand](gallery/showcase/supply_demand.png) | ![small_multiples](gallery/showcase/small_multiples.png) |
 
