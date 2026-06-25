@@ -77,6 +77,16 @@ print(result.report.status)  # "pass"
 |:---:|:---:|:---:|
 | ![contour](gallery/showcase/chart_contour.png) | ![waterfall](gallery/showcase/chart_waterfall.png) | ![dumbbell](gallery/showcase/chart_dumbbell.png) |
 
+| Violinplot / 小提琴图 | Area / 面积图 | Bullet / 子弹图 |
+|:---:|:---:|:---:|
+| ![violinplot](gallery/showcase/chart_violinplot.png) | ![area](gallery/showcase/chart_area.png) | ![bullet](gallery/showcase/chart_bullet.png) |
+
+### 3D Charts / 三维图
+
+| 3D Surface / 曲面图 | 3D Scatter / 散点图 | 3D Bar / 柱状图 |
+|:---:|:---:|:---:|
+| ![3d_surface](gallery/showcase/chart_3d_surface.png) | ![3d_scatter](gallery/showcase/chart_3d_scatter.png) | ![3d_bar](gallery/showcase/chart_3d_bar.png) |
+
 ### Multi-panel Figures / 多面板组合图
 
 | 4-panel (2x2) / 4 面板 | 6-panel (2x3) / 6 面板 |
