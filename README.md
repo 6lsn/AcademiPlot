@@ -1,21 +1,22 @@
 # AcademiPlot
 
 > **Publication-ready academic figures in one line.**
->
-> 一行代码，论文图表直达 Nature 级。
+> **一行代码，论文图表直达 Nature 级。**
 
 [![PyPI version](https://img.shields.io/pypi/v/acadp.svg)](https://pypi.org/project/acadp/)
 [![Python](https://img.shields.io/pypi/pyversions/acadp.svg)](https://pypi.org/project/acadp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[English](README.md) | [中文](README_CN.md)
+
 ---
 
-## Why AcademiPlot?
+## Why AcademiPlot? / 为什么选择 AcademiPlot？
 
 <table>
 <tr>
-<td align="center"><b>Before (matplotlib default)</b></td>
-<td align="center"><b>After (AcademiPlot)</b></td>
+<td align="center"><b>Before (matplotlib default) / 默认样式</b></td>
+<td align="center"><b>After (AcademiPlot) / 学术级样式</b></td>
 </tr>
 <tr>
 <td><img src="gallery/before_after/before.png" width="400"></td>
@@ -23,16 +24,16 @@
 </tr>
 </table>
 
-**What makes it different:**
+**What makes it different: / 核心优势：**
 
-- **Nature/Science-grade styles** — not just colors, complete academic figure standards
-- **Smart suggest** — describe your goal, it picks the best chart type
-- **Quality review** — 6-dimension scoring checks if your figure meets academic standards
-- **14 chart types** — from line plots to Pareto frontiers
+- **Nature/Science-grade styles / Nature/Science 级样式** — not just colors, but complete academic figure standards / 不只是换颜色，而是完整的学术图表规范
+- **Smart suggest / 智能推荐** — describe your goal, it picks the best chart type / 描述你想展示的内容，自动选择最佳图表类型
+- **Quality review / 质量审查** — 6-dimension scoring checks if your figure meets academic standards / 6 维度评分，检查图表是否符合学术标准
+- **14 chart types / 14 种图表** — from line plots to Pareto frontiers / 从折线图到 Pareto 前沿
 
 ---
 
-## Quick Start
+## Quick Start / 快速开始
 
 ```bash
 pip install acadp
@@ -42,200 +43,204 @@ pip install acadp
 import acadp
 import numpy as np
 
-# One-line chart
+# One-line chart / 一行代码出图
 x = np.linspace(0, 10, 50)
 ax = acadp.lineplot(x=x, y=np.sin(x), title="示例曲线", xlabel="X", ylabel="Y")
 
-# Smart suggest — describe what you want to show
+# Smart suggest — describe what you want to show / 智能推荐
 ax = acadp.suggest(df, task="展示各方案的成本对比")
 
-# Full pipeline — suggest + render + quality review
+# Full pipeline — suggest + render + quality review / 完整流程
 result = acadp.auto_plot(df, task="展示成本分解与优化空间")
 print(result.report.status)  # "pass"
 ```
 
 ---
 
-## Gallery
+## Gallery / 图表示例
 
-### Single Charts
+### Single Charts / 单图
 
-| Line | Bar | Scatter |
+| Line / 折线图 | Bar / 柱状图 | Scatter / 散点图 |
 |:---:|:---:|:---:|
 | ![line](gallery/showcase/line.png) | ![bar](gallery/showcase/bar.png) | ![scatter](gallery/showcase/scatter.png) |
 
-| Heatmap | Box Plot | Radar |
+| Heatmap / 热力图 | Box Plot / 箱线图 | Radar / 雷达图 |
 |:---:|:---:|:---:|
 | ![heatmap](gallery/showcase/heatmap.png) | ![boxplot](gallery/showcase/boxplot.png) | ![radar](gallery/showcase/radar.png) |
 
-| Histogram | Stacked Bar | Pareto |
+| Histogram / 直方图 | Stacked Bar / 堆叠柱状图 | Pareto / Pareto 前沿 |
 |:---:|:---:|:---:|
 | ![hist](gallery/showcase/histogram.png) | ![stacked](gallery/showcase/stacked_bar.png) | ![pareto](gallery/showcase/pareto.png) |
 
-| Contour | Waterfall | Dumbbell |
+| Contour / 等高线图 | Waterfall / 瀑布图 | Dumbbell / 前后对比图 |
 |:---:|:---:|:---:|
 | ![contour](gallery/showcase/contour.png) | ![waterfall](gallery/showcase/waterfall.png) | ![dumbbell](gallery/showcase/dumbbell.png) |
 
-### Multi-panel Figures
+### Multi-panel Figures / 多面板组合图
 
-| 4-panel (2x2) | 6-panel (2x3) |
+| 4-panel (2x2) / 4 面板 | 6-panel (2x3) / 6 面板 |
 |:---:|:---:|
 | ![4panel](gallery/showcase/multipanel_4panel.png) | ![6panel](gallery/showcase/multipanel_6panel.png) |
 
 ---
 
-## Usage Guide
+## Usage Guide / 使用指南
 
-### 1. Direct API — When You Know What You Want
+### 1. Direct API / 直接调用 API
+
+When you know what chart you want / 明确知道自己要什么图时：
 
 ```python
 import acadp
 
-# Line chart
+# Line chart / 折线图
 ax = acadp.lineplot(x=[1,2,3,4,5], y=[2,4,1,5,3],
-                     title="Growth Trend", xlabel="Year", ylabel="GDP")
+                     title="增长趋势", xlabel="年份", ylabel="GDP")
 
-# Bar chart with highlight
-ax = acadp.barplot(["Method A", "Method B", "Method C"],
-                    [85, 92, 78], highlight="max",
-                    title="Performance Comparison")
+# Bar chart with highlight / 柱状图 + 高亮最大值
+ax = acadp.barplot(["方法A", "方法B", "方法C"], [85, 92, 78],
+                    highlight="max", title="性能对比")
 
-# Scatter with trend line + R-squared
-ax = acadp.scatter(x=var1, y=var2, trend=True,
-                    title="Correlation Analysis")
+# Scatter with trend + R² / 散点图 + 趋势线
+ax = acadp.scatter(x=var1, y=var2, trend=True, title="相关性分析")
 
-# Correlation heatmap
-ax = acadp.heatmap(corr_matrix, labels=["Var1","Var2","Var3"],
-                    title="Correlation Matrix")
+# Correlation heatmap / 相关性热力图
+ax = acadp.heatmap(corr_matrix, labels=["指标1","指标2","指标3"],
+                    title="指标相关性矩阵")
 
-# Box plot with grouping
-ax = acadp.boxplot(df, y="score", groupby="method")
+# Box plot with grouping / 箱线图（按分组）
+ax = acadp.boxplot(df, y="得分", groupby="方法")
 
-# Histogram with KDE overlay
-ax = acadp.histogram(values, kde=True, title="Error Distribution")
+# Histogram + KDE / 直方图 + 密度曲线
+ax = acadp.histogram(values, kde=True, title="误差分布")
 
-# Radar chart
-ax = acadp.radar(["Speed","Accuracy","Memory","Cost"],
-                  [0.85, 0.92, 0.7, 0.75], title="Multi-dimensional Evaluation")
+# Radar chart / 雷达图
+ax = acadp.radar(["速度","精度","成本","可靠性"],
+                  [0.85, 0.92, 0.75, 0.88], title="综合评估")
 
-# Stacked bar
+# Stacked bar / 堆叠柱状图
 ax = acadp.stacked_bar(["Q1","Q2","Q3","Q4"],
-                        {"Materials": [30,35,28,32], "Labor": [20,22,18,25]},
-                        title="Quarterly Cost Breakdown")
+                        {"材料": [30,35,28,32], "人工": [20,22,18,25]},
+                        title="季度成本构成")
 
-# Pareto frontier
+# Pareto frontier / Pareto 前沿
 ax = acadp.pareto(x=costs, y=quality, frontier=True,
-                   title="Multi-objective Optimization")
+                   title="多目标优化 Pareto 前沿")
 
-# Contour with optimum
-ax = acadp.contour(X, Y, Z, optimum=(5, 5), title="Parameter Optimization")
+# Contour + optimum / 等高线图 + 最优点
+ax = acadp.contour(X, Y, Z, optimum=(5, 5), title="参数优化等高线")
 
-# Waterfall
-ax = acadp.waterfall(["Base","Cost+","Revenue-","Final"],
-                      [100, 20, -15, 105], title="Cost Decomposition")
+# Waterfall / 瀑布图
+ax = acadp.waterfall(["基础","材料+","人工+","节省−","最终"],
+                      [100, 20, 15, -12, 123], title="成本分解瀑布图")
 
-# Dumbbell (before/after comparison)
-ax = acadp.dumbbell([72, 65, 80], [88, 82, 85], ["A","B","C"],
-                     title="Before vs After")
+# Dumbbell (before/after) / 前后对比图
+ax = acadp.dumbbell([72, 65, 80], [88, 82, 85], ["方法A","方法B","方法C"],
+                     title="优化前后对比")
 ```
 
-### 2. Smart Suggest — When You're Not Sure Which Chart
+### 2. Smart Suggest / 智能推荐
+
+When you're not sure which chart to use / 不确定用什么图时：
 
 ```python
 import pandas as pd
 
 df = pd.read_csv("data.csv")
 
-# Just describe what you want to show
+# Just describe what you want to show / 只需描述你想展示什么
 ax = acadp.suggest(df, task="展示各方案的成本对比")
-# -> Automatically picks barplot, detects "cost" column, adds labels
+# -> Auto-selects barplot, detects cost column / 自动选择柱状图，检测到成本列
 
 ax = acadp.suggest(df, task="分析变量之间的相关性")
-# -> Automatically picks heatmap, computes correlation matrix
+# -> Auto-selects heatmap, computes correlation / 自动选择热力图，计算相关矩阵
 
 ax = acadp.suggest(df, task="展示时间趋势变化")
-# -> Automatically picks lineplot, uses time column as x-axis
+# -> Auto-selects lineplot, uses time as x-axis / 自动选择折线图
 
 ax = acadp.suggest(df, task="对比各方法的性能分布")
-# -> Automatically picks boxplot with groupby
+# -> Auto-selects boxplot with groupby / 自动选择箱线图并分组
 ```
 
-### 3. Full Pipeline — Suggest + Review + Auto-fix
+### 3. Full Pipeline / 完整流程
+
+Suggest + render + quality review + auto-fix / 推荐 + 出图 + 审查 + 自动修正：
 
 ```python
 result = acadp.auto_plot(df, task="展示成本分解与优化空间")
 
-# result.chart  — the generated matplotlib Axes
-# result.report — ReviewResult with scores and status
-# result.changes — list of auto-applied fixes
+# result.chart  — the generated matplotlib Axes / 生成的图表
+# result.report — ReviewResult with scores and status / 审查结果
+# result.changes — list of auto-applied fixes / 自动修正内容
 
-print(f"Status: {result.report.status}")    # "pass" / "revise" / "manual_review"
-print(f"Score:  {result.report.scores}")    # 6-dimension scores
-print(f"Changes: {result.changes}")         # what was auto-fixed
+print(f"Status / 状态: {result.report.status}")    # "pass"
+print(f"Score / 评分: {result.report.scores}")     # 6-dimension scores
+print(f"Changes / 修正: {result.changes}")         # auto-fixed items
 ```
 
-### 4. Quality Review
+### 4. Quality Review / 质量审查
 
 ```python
-# Review from metadata dict
+# Review from metadata dict / 从元数据字典审查
 metadata = {
-    "figure_name": "fig1",
+    "figure_name": "图1",
     "plot_type": "bar",
     "problem_type": "评价类",
     "modeling_purpose": "展示各方案成本对比",
-    "variables": {"x": "Method", "y": "Cost"},
-    "axis_labels": {"x": "Method", "y": "Cost ($)"},
-    "caption": "Comparison of cost across methods",
+    "variables": {"x": "方法", "y": "成本"},
+    "axis_labels": {"x": "方法", "y": "成本（万元）"},
+    "caption": "各方案成本对比",
     "usage": "paper",
 }
 report = acadp.review(metadata)
 print(report.status)          # "pass"
 print(report.to_markdown())   # formatted review report
 
-# Review all figures in a directory
+# Batch review / 批量审查
 batch = acadp.review_dir("figures/")
-batch.to_markdown("review_report.md")
+batch.to_markdown("审查报告.md")
 ```
 
-### 5. Style Themes
+### 5. Style Themes / 切换主题风格
 
 ```python
-# Nature journal style (default)
+# Nature journal style (default) / Nature 期刊风格（默认）
 acadp.set_style("nature")
 
-# Science journal style (serif fonts)
+# Science journal style / Science 期刊风格（衬线字体）
 acadp.set_style("science")
 
-# IEEE conference style (compact, high DPI)
+# IEEE conference style / IEEE 会议风格（紧凑、高 DPI）
 acadp.set_style("ieee")
 
-# Customize
-acadp.set_dpi(600)         # high-res output
-acadp.set_font("SimHei")   # Chinese font
+# Customize / 自定义配置
+acadp.set_dpi(600)         # high-res output / 高分辨率输出
+acadp.set_font("SimHei")   # Chinese font / 中文字体
 acadp.set_context("paper") # paper / presentation / poster
 ```
 
-### 6. Data Input Formats
+### 6. Data Input / 数据输入格式
 
 ```python
-# Direct arrays
+# Direct arrays / 直接传数组
 ax = acadp.lineplot(x=[1,2,3], y=[4,5,6])
 
 # Pandas DataFrame
 import pandas as pd
 df = pd.read_csv("data.csv")
-ax = acadp.barplot(df, x="category", y="value")
+ax = acadp.barplot(df, x="类别", y="数值")
 
-# From Excel
-df = pd.read_excel("results.xlsx")
-ax = acadp.scatter(df, x="input", y="output", trend=True)
+# Excel file / Excel 文件
+df = pd.read_excel("结果.xlsx")
+ax = acadp.scatter(df, x="投入", y="产出", trend=True)
 
-# Smart suggest accepts file paths directly
+# Smart suggest accepts file paths / 智能推荐支持文件路径
 ax = acadp.suggest("data.csv", task="展示趋势变化")
 ax = acadp.suggest("results.xlsx", task="对比各方案")
 ```
 
-### 7. Multi-panel Figures (Advanced)
+### 7. Multi-panel Figures / 多面板组合图（进阶）
 
 ```python
 import matplotlib.pyplot as plt
@@ -245,87 +250,87 @@ fig = plt.figure(figsize=(10, 6))
 gs = GridSpec(2, 2, figure=fig, hspace=0.35, wspace=0.3)
 
 ax1 = fig.add_subplot(gs[0, 0])
-acadp.lineplot(x=x, y=y1, ax=ax1, title="A. Trend Analysis")
+acadp.lineplot(x=x, y=y1, ax=ax1, title="A. 趋势分析")
 
 ax2 = fig.add_subplot(gs[0, 1])
-acadp.barplot(categories, values, ax=ax2, title="B. Comparison")
+acadp.barplot(categories, values, ax=ax2, title="B. 方案对比")
 
 ax3 = fig.add_subplot(gs[1, 0])
-acadp.scatter(x=x, y=y, trend=True, ax=ax3, title="C. Correlation")
+acadp.scatter(x=x, y=y, trend=True, ax=ax3, title="C. 相关性分析")
 
 ax4 = fig.add_subplot(gs[1, 1])
-acadp.boxplot(data, ax=ax4, title="D. Distribution")
+acadp.boxplot(data, ax=ax4, title="D. 分布分析")
 
-fig.savefig("multi_panel.png", dpi=300, bbox_inches="tight")
+fig.savefig("多面板图.png", dpi=300, bbox_inches="tight")
 ```
 
-### 8. Export for Papers
+### 8. Export for Papers / 导出论文用图
 
 ```python
-# Standard export (300 DPI, tight bbox)
-ax = acadp.lineplot(x, y, title="My Figure")
-ax.figure.savefig("figure1.png", dpi=300, bbox_inches="tight")
+# Standard export (300 DPI) / 标准导出
+ax = acadp.lineplot(x, y, title="我的图表")
+ax.figure.savefig("图1.png", dpi=300, bbox_inches="tight")
 
-# Using built-in helper
-acadp.save_figure(ax.figure, "figure1.png", dpi=300)
+# Built-in helper / 内置辅助函数
+acadp.save_figure(ax.figure, "图1.png", dpi=300)
 
-# LaTeX-friendly vector format
-ax.figure.savefig("figure1.pdf", bbox_inches="tight")
-ax.figure.savefig("figure1.svg", bbox_inches="tight")
+# Vector format for LaTeX / LaTeX 友好的矢量格式
+ax.figure.savefig("图1.pdf", bbox_inches="tight")
+ax.figure.savefig("图1.svg", bbox_inches="tight")
 ```
 
 ---
 
-## API Reference
+## API Reference / API 参考
 
-### Chart Functions
+### Chart Functions / 图表函数
 
-| Function | Description | Key Args |
+| Function / 函数 | Description / 说明 | Key Args / 核心参数 |
 |----------|-------------|----------|
-| `lineplot()` | Line chart | `x, y, title, color, marker` |
-| `barplot()` | Bar chart | `x, y, highlight="max", horizontal` |
-| `scatter()` | Scatter plot | `x, y, trend=True, alpha` |
-| `heatmap()` | Correlation heatmap | `data, labels, annot, cmap` |
-| `boxplot()` | Box plot | `data, groupby` |
-| `violinplot()` | Violin plot | `data, groupby` |
-| `histogram()` | Histogram + KDE | `data, bins, kde=True` |
-| `radar()` | Radar/spider chart | `labels, values, fill` |
-| `area()` | Stacked area | `x, y_dict, labels` |
-| `stacked_bar()` | Stacked bar | `categories, series_dict` |
-| `pareto()` | Pareto frontier | `x, y, frontier=True` |
-| `contour()` | Contour plot | `X, Y, Z, optimum, filled` |
-| `waterfall()` | Waterfall chart | `categories, values` |
-| `dumbbell()` | Before/after comparison | `before, after, labels` |
+| `lineplot()` | Line chart / 折线图 | `x, y, title, color, marker` |
+| `barplot()` | Bar chart / 柱状图 | `x, y, highlight="max"` |
+| `scatter()` | Scatter plot / 散点图 | `x, y, trend=True` |
+| `heatmap()` | Correlation heatmap / 热力图 | `data, labels, annot` |
+| `boxplot()` | Box plot / 箱线图 | `data, groupby` |
+| `violinplot()` | Violin plot / 小提琴图 | `data, groupby` |
+| `histogram()` | Histogram + KDE / 直方图 | `data, kde=True` |
+| `radar()` | Radar chart / 雷达图 | `labels, values` |
+| `area()` | Stacked area / 面积图 | `x, y_dict` |
+| `stacked_bar()` | Stacked bar / 堆叠柱状图 | `categories, series_dict` |
+| `pareto()` | Pareto frontier / Pareto 前沿 | `x, y, frontier` |
+| `contour()` | Contour plot / 等高线图 | `X, Y, Z, optimum` |
+| `waterfall()` | Waterfall / 瀑布图 | `categories, values` |
+| `dumbbell()` | Before/after / 前后对比图 | `before, after, labels` |
 
-### Smart Functions
+### Smart Functions / 智能函数
 
-| Function | Description |
+| Function / 函数 | Description / 说明 |
 |----------|-------------|
-| `suggest(data, task)` | Auto-select best chart from data + description |
-| `auto_plot(data, task)` | Full pipeline: suggest, render, review, revise |
-| `review(source)` | 6-dimension quality review |
-| `review_dir(path)` | Batch review all figures in directory |
-| `set_style("nature")` | Switch theme (nature / science / ieee) |
-| `set_dpi(n)` | Set output DPI (default: 300) |
-| `set_font(name)` | Override font family |
-| `set_context(ctx)` | Set context (paper / presentation / poster) |
+| `suggest(data, task)` | Auto-select best chart / 自动选择最佳图表 |
+| `auto_plot(data, task)` | Full pipeline / 完整流程：推荐 → 出图 → 审查 → 修正 |
+| `review(source)` | 6-dimension review / 6 维度质量审查 |
+| `review_dir(path)` | Batch review / 批量审查 |
+| `set_style("nature")` | Switch theme / 切换主题 |
+| `set_dpi(n)` | Set DPI / 设置输出 DPI |
+| `set_font(name)` | Set font / 设置字体 |
+| `set_context(ctx)` | Set context / 设置场景 |
 
 ---
 
-## Comparison
+## Comparison / 对比
 
-| Feature | matplotlib | seaborn | **AcademiPlot** |
+| Feature / 功能 | matplotlib | seaborn | **AcademiPlot** |
 |---------|:---:|:---:|:---:|
-| Academic styles | no | no | Nature/Science/IEEE |
-| Smart chart selection | no | no | yes |
-| Quality review | no | no | 6-dimension scoring |
-| One-line API | no | yes | yes |
-| Pareto/Contour/Waterfall | manual | no | yes |
-| Chinese labels | manual | manual | built-in |
-| Multi-panel support | manual | no | yes |
+| Academic styles / 学术样式 | no / 无 | no / 无 | Nature/Science/IEEE |
+| Smart selection / 智能选图 | no / 无 | no / 无 | yes / 有 |
+| Quality review / 质量审查 | no / 无 | no / 无 | 6-dimension / 6 维度 |
+| One-line API / 一行 API | no / 无 | yes / 有 | yes / 有 |
+| Pareto/Contour/Waterfall | manual / 手动 | no / 无 | yes / 有 |
+| Chinese labels / 中文标签 | manual / 手动 | manual / 手动 | built-in / 内置 |
+| Multi-panel / 多面板图 | manual / 手动 | no / 无 | yes / 有 |
 
 ---
 
-## License
+## License / 许可证
 
 MIT
