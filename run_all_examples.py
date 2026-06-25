@@ -6,31 +6,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SCRIPTS = ROOT / "scripts"
-REVIEWER = ROOT / "review" / "chart_reviewer.py"
-AUTO_REVISER = ROOT / "review" / "chart_auto_reviser.py"
 sys.path.insert(0, str(SCRIPTS))
 
 from utf8_io import configure_utf8_stdio, utf8_subprocess_env
 
 
 configure_utf8_stdio()
-NON_EXAMPLE_SCRIPTS = {
-    "__init__.py",
-    "style.py",
-    "utf8_io.py",
-    "data_profiler.py",
-    "chart_planner.py",
-    "render_from_spec.py",
-    "layout_qa.py",
-}
 
 
 def plot_scripts():
-    return sorted(
-        path
-        for path in SCRIPTS.glob("*.py")
-        if path.name not in NON_EXAMPLE_SCRIPTS
-    )
+    examples_dir = ROOT / "scripts" / "examples"
+    return sorted(examples_dir.glob("*.py"))
 
 
 def run_examples(output_dir):
@@ -64,8 +50,7 @@ def run_review(output_dir, review_dir):
     review_dir.mkdir(parents=True, exist_ok=True)
     return subprocess.run(
         [
-            sys.executable,
-            str(REVIEWER),
+            "acadp-review",
             "--metadata-dir",
             str(output_dir),
             "--output-dir",
@@ -84,17 +69,35 @@ def run_auto_revise(output_dir, revise_dir, max_rounds):
     if not metadata_files:
         raise RuntimeError("No .metadata.json files found. Generate figures before auto revise.")
     revise_dir.mkdir(parents=True, exist_ok=True)
+    # Use acadp._reviser via a helper script since it has no CLI entry point.
+    script = f"""\
+import json, sys
+from pathlib import Path
+from dataclasses import dataclass, field
+from acadp._reviser import revise_metadata
+
+@dataclass
+class ReviewResult:
+    major_issues: list = field(default_factory=list)
+    minor_issues: list = field(default_factory=list)
+    suggested_caption: str = ""
+
+meta_dir = Path(r"{output_dir}")
+rev_dir = Path(r"{revise_dir}")
+rev_dir.mkdir(parents=True, exist_ok=True)
+for mf in sorted(meta_dir.glob("*.metadata.json")):
+    meta = json.loads(mf.read_text(encoding="utf-8"))
+    review = ReviewResult()  # no prior review, pass empty
+    revised, changes, blocked = revise_metadata(meta, review)
+    if changes:
+        out = rev_dir / mf.name
+        out.write_text(json.dumps(revised, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"REVISED={{mf.name}}: {{', '.join(changes)}}")
+    else:
+        print(f"SKIPPED={{mf.name}}: no changes needed")
+"""
     return subprocess.run(
-        [
-            sys.executable,
-            str(AUTO_REVISER),
-            "--metadata-dir",
-            str(output_dir),
-            "--output-dir",
-            str(revise_dir),
-            "--max-rounds",
-            str(max_rounds),
-        ],
+        [sys.executable, "-c", script],
         text=True,
         capture_output=True,
         encoding="utf-8",
