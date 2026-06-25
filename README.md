@@ -63,19 +63,19 @@ print(result.report.status)  # "pass"
 
 | Line / 折线图 | Bar / 柱状图 | Scatter / 散点图 |
 |:---:|:---:|:---:|
-| ![line](gallery/showcase/line.png) | ![bar](gallery/showcase/bar.png) | ![scatter](gallery/showcase/scatter.png) |
+| ![line](gallery/showcase/chart_line.png) | ![bar](gallery/showcase/chart_bar.png) | ![scatter](gallery/showcase/chart_scatter.png) |
 
 | Heatmap / 热力图 | Box Plot / 箱线图 | Radar / 雷达图 |
 |:---:|:---:|:---:|
-| ![heatmap](gallery/showcase/heatmap.png) | ![boxplot](gallery/showcase/boxplot.png) | ![radar](gallery/showcase/radar.png) |
+| ![heatmap](gallery/showcase/chart_heatmap.png) | ![boxplot](gallery/showcase/chart_boxplot.png) | ![radar](gallery/showcase/chart_radar.png) |
 
 | Histogram / 直方图 | Stacked Bar / 堆叠柱状图 | Pareto / Pareto 前沿 |
 |:---:|:---:|:---:|
-| ![hist](gallery/showcase/histogram.png) | ![stacked](gallery/showcase/stacked_bar.png) | ![pareto](gallery/showcase/pareto.png) |
+| ![hist](gallery/showcase/chart_histogram.png) | ![stacked](gallery/showcase/chart_stacked_bar.png) | ![pareto](gallery/showcase/chart_pareto.png) |
 
 | Contour / 等高线图 | Waterfall / 瀑布图 | Dumbbell / 前后对比图 |
 |:---:|:---:|:---:|
-| ![contour](gallery/showcase/contour.png) | ![waterfall](gallery/showcase/waterfall.png) | ![dumbbell](gallery/showcase/dumbbell.png) |
+| ![contour](gallery/showcase/chart_contour.png) | ![waterfall](gallery/showcase/chart_waterfall.png) | ![dumbbell](gallery/showcase/chart_dumbbell.png) |
 
 ### Multi-panel Figures / 多面板组合图
 
