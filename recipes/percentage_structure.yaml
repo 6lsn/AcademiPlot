@@ -1,0 +1,44 @@
+id: "percentage_structure"
+name: "Percentage Structure Comparison"
+figure_role: "composition_comparison"
+problem_types: ["评价类", "统计处理类"]
+use_when:
+  - "Each category is a whole split into comparable status or component shares."
+  - "The paper needs to compare composition rather than absolute totals."
+  - "Status labels such as satisfied, partial, and unsatisfied are central."
+avoid_when:
+  - "Absolute totals are the main conclusion."
+  - "Components do not sum to a meaningful whole."
+required_semantics:
+  category: "Whole categories being compared."
+  components: "Part categories that sum to each whole."
+  totals: "Optional absolute totals used for labels."
+  unit: "Percent, days, count, or share."
+visual_layers:
+  - "percentage_segments"
+  - "category_totals"
+  - "segment_labels"
+  - "legend_top"
+planner_rules:
+  prefer_when:
+    - "figure_role is composition_comparison, share_structure, or annual_status_structure."
+    - "data_semantics contains components that sum to category totals."
+    - "composition comparison is more important than absolute volume."
+  avoid_templates:
+    - "plot_stacked_bar"
+    - "plot_piechart"
+output:
+  plot_type: "percentage_stacked_bar"
+  usage: "paper"
+  template: "plot_percentage_stacked_bar"
+  fallback_templates: ["plot_stacked_bar"]
+metadata_defaults:
+  variables:
+    x: "比较类别"
+    y: "组成占比"
+    group: "组成部分"
+  caption_pattern: "百分比堆叠图展示各类别中不同组成部分的占比结构。"
+quality_checks:
+  - "Normalize each category to 100% before plotting."
+  - "Use inside labels only when segment height is readable."
+  - "Mention absolute totals in labels or caption when totals matter."

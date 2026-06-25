@@ -1,0 +1,48 @@
+version: 1
+purpose: "Index advanced chart recipes for math modeling paper figures."
+selection_order:
+  - "Match figure_role first."
+  - "Check required_semantics against available data fields."
+  - "Prefer recipes that expose model mechanism, thresholds, gaps, or optimum structure."
+  - "Use basic templates only when no advanced recipe matches."
+recipes:
+  - id: "bullet_threshold"
+    path: "recipes/bullet_threshold.yaml"
+    trigger_roles: ["constraint_compliance", "threshold_comparison", "indicator_evaluation"]
+    recommended_plot_type: "bar"
+    summary: "Compare actual indicator values against directional thresholds with pass/fail color semantics."
+  - id: "contour_optimization"
+    path: "recipes/contour_optimization.yaml"
+    trigger_roles: ["parameter_optimization", "surface_search", "two_parameter_optimization"]
+    recommended_plot_type: "contour"
+    summary: "Show two-parameter objective surfaces with contour lines, optimum path, and baseline marker."
+  - id: "dumbbell_comparison"
+    path: "recipes/dumbbell_comparison.yaml"
+    trigger_roles: ["paired_scheme_comparison", "before_after_comparison", "two_series_gap"]
+    recommended_plot_type: "dotplot"
+    summary: "Show paired baseline/candidate values, gap segments, and saving or improvement labels."
+  - id: "supply_demand_balance"
+    path: "recipes/supply_demand_balance.yaml"
+    trigger_roles: ["system_balance", "supply_demand_matching", "power_balance"]
+    recommended_plot_type: "time_series"
+    summary: "Combine stacked supply, demand line, and net balance bars for time-indexed balance problems."
+  - id: "small_multiples_sensitivity"
+    path: "recipes/small_multiples_sensitivity.yaml"
+    trigger_roles: ["multi_factor_sensitivity", "parameter_sensitivity", "scenario_sensitivity"]
+    recommended_plot_type: "scatter_with_trend"
+    summary: "Use aligned factor panels with trend lines and baseline references for sensitivity analysis."
+  - id: "waterfall_cost"
+    path: "recipes/waterfall_cost.yaml"
+    trigger_roles: ["cost_decomposition", "incremental_change", "contribution_breakdown"]
+    recommended_plot_type: "waterfall"
+    summary: "Explain how components or interventions add to or reduce a total cost or objective value."
+  - id: "pareto_frontier"
+    path: "recipes/pareto_frontier.yaml"
+    trigger_roles: ["multi_objective_tradeoff", "pareto_frontier", "efficiency_frontier"]
+    recommended_plot_type: "scatter_with_trend"
+    summary: "Expose efficient frontier and dominated candidates in multi-objective optimization."
+  - id: "percentage_structure"
+    path: "recipes/percentage_structure.yaml"
+    trigger_roles: ["composition_comparison", "share_structure", "annual_status_structure"]
+    recommended_plot_type: "percentage_stacked_bar"
+    summary: "Compare part-to-whole composition across categories using normalized stacked bars."

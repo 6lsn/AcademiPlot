@@ -1,0 +1,46 @@
+id: "contour_optimization"
+name: "Contour Optimization Surface"
+figure_role: "parameter_optimization"
+problem_types: ["优化类", "预测类", "物理工程空间类"]
+use_when:
+  - "The result is a grid or surface over two controllable parameters."
+  - "The paper needs to locate low-cost, high-score, or feasible regions."
+  - "A 2D contour is more readable than a decorative 3D surface."
+avoid_when:
+  - "Only one parameter varies."
+  - "The objective values are not defined on a grid or cannot be interpolated safely."
+required_semantics:
+  x: "First decision parameter."
+  y: "Second decision parameter."
+  z: "Objective value, cost, score, loss, or feasibility metric."
+  grid: "Whether x-y-z form a gridded response surface."
+  baseline: "Optional baseline parameter setting to highlight."
+visual_layers:
+  - "filled_contour"
+  - "contour_lines"
+  - "optimum_path"
+  - "baseline_marker"
+  - "colorbar"
+planner_rules:
+  prefer_when:
+    - "figure_role is parameter_optimization or surface_search."
+    - "data_semantics contains x, y, z and grid is true."
+    - "available_templates includes contour or 3d_surface but paper readability favors 2D."
+  avoid_templates:
+    - "plot_line_basic"
+    - "plot_3d_surface"
+output:
+  plot_type: "contour"
+  usage: "paper"
+  template: "plot_contour"
+  fallback_templates: ["plot_3d_surface", "plot10"]
+metadata_defaults:
+  variables:
+    x: "参数一"
+    y: "参数二"
+    z: "目标函数值"
+  caption_pattern: "二维参数寻优等高线图，展示参数组合与目标函数值之间的优化关系。"
+quality_checks:
+  - "Add colorbar with objective unit."
+  - "Use contour lines to support approximate reading."
+  - "Mark baseline or optimum only when it comes from model computation."

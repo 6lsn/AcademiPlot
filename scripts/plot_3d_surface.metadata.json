@@ -1,0 +1,27 @@
+{
+  "figure_name": "plot_3d_surface",
+  "plot_type": "3d_surface",
+  "problem_type": "优化类",
+  "modeling_purpose": "展示建模数据的主要结构和变化特征",
+  "variables": {
+    "x": "X",
+    "y": "Y",
+    "z": "响应值"
+  },
+  "axis_labels": {
+    "x": "X",
+    "y": "Y",
+    "z": "响应值"
+  },
+  "legend_labels": [],
+  "caption": "",
+  "usage": "paper",
+  "annotate": false,
+  "annotation_config": null,
+  "data_summary": {
+    "sample_size": 0,
+    "min": null,
+    "max": null,
+    "missing_values": 0
+  }
+}

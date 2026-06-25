@@ -1,0 +1,30 @@
+{
+  "figure_name": "plot_grouped_bar",
+  "plot_type": "grouped_bar",
+  "problem_type": "评价类",
+  "modeling_purpose": "展示不同年份各产品销售额对比",
+  "variables": {
+    "x": "产品类别",
+    "y": "销售额 (万元)"
+  },
+  "axis_labels": {
+    "x": "产品类别",
+    "y": "销售额 (万元)"
+  },
+  "legend_labels": [
+    "2021年",
+    "2022年",
+    "2023年"
+  ],
+  "caption": "不同年份各产品销售额对比",
+  "usage": "paper",
+  "annotate": false,
+  "annotation_config": null,
+  "data_summary": {
+    "sample_size": 0,
+    "min": null,
+    "max": null,
+    "missing_values": 0
+  },
+  "internal_title": "不同年份各产品销售额对比"
+}

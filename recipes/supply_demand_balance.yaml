@@ -1,0 +1,44 @@
+id: "supply_demand_balance"
+name: "Supply Demand Balance With Net Gap"
+figure_role: "system_balance"
+problem_types: ["预测类", "优化类", "物理工程空间类"]
+use_when:
+  - "A time-indexed system has supply components and a demand or load series."
+  - "The conclusion depends on matching, surplus, deficit, or balance periods."
+  - "A plain multi-series line chart would hide the net gap."
+avoid_when:
+  - "There is no time axis."
+  - "Supply and demand are not measured in compatible units."
+required_semantics:
+  time_axis: "Time steps such as hour, day, month, or year."
+  supply_components: "Additive supply components."
+  demand_series: "Demand, load, or requirement series."
+  secondary_series: "Optional baseline demand or reference load."
+  derived_metric: "Net supply-demand balance."
+visual_layers:
+  - "stacked_supply"
+  - "demand_line"
+  - "net_balance_bar"
+  - "reference_line"
+planner_rules:
+  prefer_when:
+    - "figure_role is system_balance, supply_demand_matching, or power_balance."
+    - "data_semantics contains supply_components and demand_series."
+    - "derived_metric describes net balance, surplus, or deficit."
+  avoid_templates:
+    - "plot_line_multi_series"
+output:
+  plot_type: "time_series"
+  usage: "paper"
+  template: "custom_supply_demand_balance"
+  fallback_templates: ["plot_area", "plot_time_series"]
+metadata_defaults:
+  variables:
+    x: "时间"
+    y: "供给、需求和净差"
+    group: "供给构成、需求曲线、净供需差"
+  caption_pattern: "供需平衡图，展示时间维度下供给构成、需求曲线和净供需差。"
+quality_checks:
+  - "Use one unit across supply, demand, and net balance."
+  - "Separate net balance into a lower panel when it would compress the main axis."
+  - "Use green for surplus and crimson for deficit."

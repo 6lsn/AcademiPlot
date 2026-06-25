@@ -1,0 +1,26 @@
+{
+  "figure_name": "plot_scatter_basic",
+  "plot_type": "scatter_basic",
+  "problem_type": "评价类",
+  "modeling_purpose": "展示双变量线性关系散点分布",
+  "variables": {
+    "x": "X轴数据",
+    "y": "Y轴数据"
+  },
+  "axis_labels": {
+    "x": "X轴数据",
+    "y": "Y轴数据"
+  },
+  "legend_labels": [],
+  "caption": "双变量线性关系散点分布",
+  "usage": "paper",
+  "annotate": false,
+  "annotation_config": null,
+  "data_summary": {
+    "sample_size": 0,
+    "min": null,
+    "max": null,
+    "missing_values": 0
+  },
+  "internal_title": "双变量线性关系散点分布"
+}

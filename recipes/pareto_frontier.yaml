@@ -1,0 +1,44 @@
+id: "pareto_frontier"
+name: "Pareto Frontier Tradeoff"
+figure_role: "multi_objective_tradeoff"
+problem_types: ["优化类", "评价类"]
+use_when:
+  - "Candidate solutions have at least two objective metrics."
+  - "The paper needs to distinguish efficient solutions from dominated alternatives."
+  - "Decision tradeoff matters more than ranking by one scalar score."
+avoid_when:
+  - "There is only one objective metric."
+  - "All candidates are already summarized by a single validated utility function."
+required_semantics:
+  objective_x: "First objective or cost."
+  objective_y: "Second objective or benefit."
+  candidates: "Candidate solution identifiers."
+  efficient_set: "Pareto-efficient candidate set or rule for detecting it."
+visual_layers:
+  - "candidate_points"
+  - "frontier_line"
+  - "efficient_set"
+  - "dominated_points"
+planner_rules:
+  prefer_when:
+    - "figure_role is multi_objective_tradeoff, pareto_frontier, or efficiency_frontier."
+    - "data_semantics contains objective_x, objective_y, and candidates."
+    - "The modeling result includes nondominated or efficient alternatives."
+  avoid_templates:
+    - "plot_grouped_bar"
+    - "plot_radar"
+output:
+  plot_type: "scatter_with_trend"
+  usage: "paper"
+  template: "custom_pareto_frontier"
+  fallback_templates: ["plot_scatter_basic", "plot_scatter_with_trend"]
+metadata_defaults:
+  variables:
+    x: "目标一"
+    y: "目标二"
+    group: "有效解与被支配解"
+  caption_pattern: "Pareto 前沿图展示多目标优化中有效解与被支配解的权衡关系。"
+quality_checks:
+  - "State objective direction in axis labels or caption."
+  - "Use subdued color for dominated candidates."
+  - "Do not connect points unless they are ordered along the frontier."

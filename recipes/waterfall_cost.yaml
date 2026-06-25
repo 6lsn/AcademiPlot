@@ -1,0 +1,45 @@
+id: "waterfall_cost"
+name: "Waterfall Cost Decomposition"
+figure_role: "cost_decomposition"
+problem_types: ["优化类", "评价类"]
+use_when:
+  - "A total cost, score, or objective is explained by sequential positive and negative contributions."
+  - "The paper needs to show how components move a baseline to a final value."
+  - "Marginal changes matter more than part-to-whole shares."
+avoid_when:
+  - "Components are independent proportions of one total; use stacked bars instead."
+  - "There is no meaningful order for the increments."
+required_semantics:
+  starting_value: "Baseline total or starting objective."
+  increments: "Positive contribution components."
+  decrements: "Negative or saving components."
+  final_value: "Final total or objective."
+visual_layers:
+  - "starting_value"
+  - "increment_bars"
+  - "decrement_bars"
+  - "connector_lines"
+  - "final_total"
+planner_rules:
+  prefer_when:
+    - "figure_role is cost_decomposition or incremental_change."
+    - "data_semantics contains starting_value and final_value."
+    - "components include both increases and decreases or ordered contributions."
+  avoid_templates:
+    - "plot_stacked_bar"
+    - "plot_piechart"
+output:
+  plot_type: "waterfall"
+  usage: "paper"
+  template: "plot_waterfall"
+  fallback_templates: ["plot_bar_with_labels"]
+metadata_defaults:
+  variables:
+    x: "成本或贡献项目"
+    y: "增减量和累计值"
+    group: "增加项、减少项、最终值"
+  caption_pattern: "瀑布图展示从基准值到最终值的成本或目标函数增减贡献。"
+quality_checks:
+  - "Use green or blue for reductions and crimson or amber for increases according to context."
+  - "Show connector lines to make cumulative logic readable."
+  - "Keep component order aligned with model accounting."

@@ -1,0 +1,26 @@
+{
+  "figure_name": "plot_radar",
+  "plot_type": "radar",
+  "problem_type": "评价类",
+  "modeling_purpose": "展示两方案多指标综合评价",
+  "variables": {},
+  "axis_labels": {
+    "x": "",
+    "y": ""
+  },
+  "legend_labels": [
+    "数据1",
+    "数据2"
+  ],
+  "caption": "两方案多指标综合评价",
+  "usage": "paper",
+  "annotate": false,
+  "annotation_config": null,
+  "data_summary": {
+    "sample_size": 0,
+    "min": null,
+    "max": null,
+    "missing_values": 0
+  },
+  "internal_title": "两方案多指标综合评价"
+}

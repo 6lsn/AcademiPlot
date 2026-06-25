@@ -1,0 +1,43 @@
+id: "small_multiples_sensitivity"
+name: "Small Multiples Sensitivity"
+figure_role: "multi_factor_sensitivity"
+problem_types: ["优化类", "预测类", "评价类"]
+use_when:
+  - "Several factors are perturbed and each affects the same outcome variable."
+  - "Each factor has its own x-scale, unit, or baseline value."
+  - "Overlaying all factors in one line chart would confuse scales."
+avoid_when:
+  - "Only one factor is varied."
+  - "All factors share a meaningful normalized x-axis and can be compared directly."
+required_semantics:
+  factors: "List of varied factors."
+  x_per_factor: "Parameter levels for each factor."
+  y: "Outcome metric."
+  baseline_per_factor: "Whether each factor has a baseline reference."
+visual_layers:
+  - "factor_panels"
+  - "trend_line"
+  - "baseline_reference"
+  - "shared_y_axis"
+planner_rules:
+  prefer_when:
+    - "figure_role is multi_factor_sensitivity or parameter_sensitivity."
+    - "data_semantics contains factors and y."
+    - "factor units differ or more than three factors would clutter one axis."
+  avoid_templates:
+    - "plot_line_multi_series"
+output:
+  plot_type: "scatter_with_trend"
+  usage: "paper"
+  template: "custom_small_multiples_sensitivity"
+  fallback_templates: ["plot_scatter_with_trend", "plot_line_basic"]
+metadata_defaults:
+  variables:
+    x: "参数水平"
+    y: "结果指标"
+    group: "敏感性因素"
+  caption_pattern: "多因素敏感性小倍图，展示各参数扰动对同一结果指标的影响方向和幅度。"
+quality_checks:
+  - "Keep y-axis unit consistent across panels."
+  - "Draw baseline references with muted lines."
+  - "Avoid per-point annotation unless one point is central to the conclusion."

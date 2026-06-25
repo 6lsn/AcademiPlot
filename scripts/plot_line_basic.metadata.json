@@ -1,0 +1,26 @@
+{
+  "figure_name": "plot_line_basic",
+  "plot_type": "line_basic",
+  "problem_type": "预测类",
+  "modeling_purpose": "展示单指标时间变化趋势",
+  "variables": {
+    "x": "时间",
+    "y": "数值"
+  },
+  "axis_labels": {
+    "x": "时间",
+    "y": "数值"
+  },
+  "legend_labels": [],
+  "caption": "单指标时间变化趋势",
+  "usage": "paper",
+  "annotate": false,
+  "annotation_config": null,
+  "data_summary": {
+    "sample_size": 0,
+    "min": null,
+    "max": null,
+    "missing_values": 0
+  },
+  "internal_title": "单指标时间变化趋势"
+}

@@ -1,0 +1,45 @@
+id: "bullet_threshold"
+name: "Bullet Threshold Compliance"
+figure_role: "constraint_compliance"
+problem_types: ["评价类", "优化类"]
+use_when:
+  - "A small set of indicators must be compared against requirement thresholds."
+  - "Each threshold has a direction such as >=, <=, or target interval."
+  - "The paper needs to show pass/fail status more clearly than a grouped bar chart."
+avoid_when:
+  - "There are no explicit thresholds or requirements."
+  - "The number of indicators is too large for readable labels."
+required_semantics:
+  category: "Indicator or constraint name."
+  actual: "Observed or model-computed value."
+  threshold: "Required threshold value."
+  direction: "Comparison direction, e.g. >=, <=, or between."
+  unit: "Ratio, percentage, or physical unit."
+visual_layers:
+  - "actual_bar"
+  - "threshold_marker"
+  - "pass_fail_color"
+  - "value_label"
+planner_rules:
+  prefer_when:
+    - "figure_role is constraint_compliance or threshold_comparison."
+    - "data_semantics contains actual, threshold, and direction."
+    - "available_templates includes grouped_bar but threshold interpretation is more important than bar grouping."
+  avoid_templates:
+    - "plot_grouped_bar"
+    - "plot_bar_basic"
+output:
+  plot_type: "bar"
+  usage: "paper"
+  template: "custom_bullet_threshold"
+  fallback_templates: ["plot_bar_horizontal", "plot_bar_with_labels"]
+metadata_defaults:
+  variables:
+    x: "指标值"
+    y: "指标名称"
+    group: "实际值、要求阈值、达标状态"
+  caption_pattern: "指标实际值与要求阈值对比图，展示各指标是否满足约束要求。"
+quality_checks:
+  - "Use semantic colors: green for pass, crimson for fail, amber for threshold."
+  - "Format ratios as percentages when unit is ratio."
+  - "Keep threshold labels close to markers without overlapping value labels."

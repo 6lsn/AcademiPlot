@@ -1,0 +1,45 @@
+id: "dumbbell_comparison"
+name: "Dumbbell Paired Scheme Comparison"
+figure_role: "paired_scheme_comparison"
+problem_types: ["评价类", "优化类"]
+use_when:
+  - "Two schemes, policies, algorithms, or modes are compared across matched categories."
+  - "The important message is the gap or improvement rather than absolute grouped bars."
+  - "A derived saving rate or improvement rate should be shown."
+avoid_when:
+  - "There are more than two primary series."
+  - "Categories are not matched pairwise."
+required_semantics:
+  category: "Matched categories or scenarios."
+  baseline_series: "Reference scheme values."
+  candidate_series: "Compared scheme values."
+  derived_metric: "Gap, saving rate, improvement rate, or reduction."
+  unit: "Value unit."
+visual_layers:
+  - "baseline_points"
+  - "candidate_points"
+  - "gap_segments"
+  - "saving_labels"
+planner_rules:
+  prefer_when:
+    - "figure_role is paired_scheme_comparison or two_series_gap."
+    - "data_semantics contains baseline_series and candidate_series."
+    - "available_templates includes grouped_bar but gap interpretation is central."
+  avoid_templates:
+    - "plot_grouped_bar"
+    - "plot_bar_with_labels"
+output:
+  plot_type: "dotplot"
+  usage: "paper"
+  template: "custom_dumbbell_comparison"
+  fallback_templates: ["plot_dotplot"]
+metadata_defaults:
+  variables:
+    x: "指标值"
+    y: "匹配类别"
+    group: "基准方案、对比方案、差异"
+  caption_pattern: "双方案配对对比图，展示各类别下基准方案与对比方案的指标差异。"
+quality_checks:
+  - "Use consistent left-to-right direction for improvement."
+  - "Place gap labels outside dense point clusters."
+  - "Use neutral connector segments so the two endpoints remain visually dominant."
