@@ -1,0 +1,5 @@
+method,accuracy,runtime,cost
+Method A,0.92,2.1,150
+Method B,0.88,1.5,200
+Method C,0.85,3.2,100
+Baseline,0.78,0.8,50
