@@ -63,29 +63,29 @@ print(result.report.status)  # "pass"
 
 | Line / 折线图 | Bar / 柱状图 | Scatter / 散点图 |
 |:---:|:---:|:---:|
-| ![line](gallery/showcase/chart_line.png) | ![bar](gallery/showcase/chart_bar.png) | ![scatter](gallery/showcase/chart_scatter.png) |
+| ![line](gallery/showcase/v2_chart_line.png) | ![bar](gallery/showcase/v2_chart_bar.png) | ![scatter](gallery/showcase/v2_chart_scatter.png) |
 
 | Heatmap / 热力图 | Box Plot / 箱线图 | Radar / 雷达图 |
 |:---:|:---:|:---:|
-| ![heatmap](gallery/showcase/chart_heatmap.png) | ![boxplot](gallery/showcase/chart_boxplot.png) | ![radar](gallery/showcase/chart_radar.png) |
+| ![heatmap](gallery/showcase/v2_chart_heatmap.png) | ![boxplot](gallery/showcase/v2_chart_boxplot.png) | ![radar](gallery/showcase/v2_chart_radar.png) |
 
 | Histogram / 直方图 | Stacked Bar / 堆叠柱状图 | Pareto / Pareto 前沿 |
 |:---:|:---:|:---:|
-| ![hist](gallery/showcase/chart_histogram.png) | ![stacked](gallery/showcase/chart_stacked_bar.png) | ![pareto](gallery/showcase/chart_pareto.png) |
+| ![hist](gallery/showcase/v2_chart_histogram.png) | ![stacked](gallery/showcase/v2_chart_stacked_bar.png) | ![pareto](gallery/showcase/v2_chart_pareto.png) |
 
 | Contour / 等高线图 | Waterfall / 瀑布图 | Dumbbell / 前后对比图 |
 |:---:|:---:|:---:|
-| ![contour](gallery/showcase/chart_contour.png) | ![waterfall](gallery/showcase/chart_waterfall.png) | ![dumbbell](gallery/showcase/chart_dumbbell.png) |
+| ![contour](gallery/showcase/v2_chart_contour.png) | ![waterfall](gallery/showcase/v2_chart_waterfall.png) | ![dumbbell](gallery/showcase/v2_chart_dumbbell.png) |
 
 | Violinplot / 小提琴图 | Area / 面积图 | Bullet / 子弹图 |
 |:---:|:---:|:---:|
-| ![violinplot](gallery/showcase/chart_violinplot.png) | ![area](gallery/showcase/chart_area.png) | ![bullet](gallery/showcase/chart_bullet.png) |
+| ![violinplot](gallery/showcase/v2_chart_violinplot.png) | ![area](gallery/showcase/v2_chart_area.png) | ![bullet](gallery/showcase/v2_chart_bullet.png) |
 
 ### 3D Charts / 三维图
 
 | 3D Surface / 曲面图 | 3D Scatter / 散点图 | 3D Bar / 柱状图 |
 |:---:|:---:|:---:|
-| ![3d_surface](gallery/showcase/chart_3d_surface.png) | ![3d_scatter](gallery/showcase/chart_3d_scatter.png) | ![3d_bar](gallery/showcase/chart_3d_bar.png) |
+| ![3d_surface](gallery/showcase/v2_chart_3d_surface.png) | ![3d_scatter](gallery/showcase/v2_chart_3d_scatter.png) | ![3d_bar](gallery/showcase/v2_chart_3d_bar.png) |
 
 ### Multi-panel Figures / 多面板组合图
 
