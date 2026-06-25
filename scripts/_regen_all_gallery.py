@@ -13,8 +13,10 @@ from style import (apply_paper_style, COLORS, palette, PAPER_CMAP, DIVERGING_CMA
                    set_chart_title, style_axis, style_3d_axis, finalize_plot,
                    save_current_figure)
 
-# Override grid color
+# Override grid color and background
 COLORS["grid"] = "#D1D5DB"
+plt.rcParams["axes.facecolor"] = "#FFFFFF"
+plt.rcParams["figure.facecolor"] = "#FFFFFF"
 
 OUT = Path(__file__).resolve().parents[1] / "gallery" / "showcase"
 OUT.mkdir(parents=True, exist_ok=True)

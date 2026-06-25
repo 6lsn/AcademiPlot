@@ -10,8 +10,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from style import apply_paper_style, COLORS, palette, set_chart_title, style_axis
 
 apply_paper_style()
-# Override grid color to be slightly more visible (matches existing gallery)
+# Override to match original gallery style
 COLORS["grid"] = "#D1D5DB"
+plt.rcParams["axes.facecolor"] = "#FFFFFF"
+plt.rcParams["figure.facecolor"] = "#FFFFFF"
 np.random.seed(42)
 
 # ========== 1. Bullet ==========
