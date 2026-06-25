@@ -166,3 +166,23 @@ def test_histogram_kde():
     twin_ax = fig.get_axes()[1]
     assert len(twin_ax.lines) >= 1, "Expected KDE line on twin axis"
     plt.close("all")
+
+
+# ---- pareto -------------------------------------------------------------------
+
+def test_pareto_returns_axes():
+    from acadp.charts._pareto import pareto
+    ax = pareto(x=[10,20,15,30,25,12], y=[0.9,0.7,0.8,0.5,0.65,0.85], frontier=True)
+    assert ax is not None
+    plt.close("all")
+
+
+# ---- contour ------------------------------------------------------------------
+
+def test_contour_returns_axes():
+    from acadp.charts._contour import contour
+    x = np.linspace(-2, 2, 50); y = np.linspace(-2, 2, 50)
+    X, Y = np.meshgrid(x, y); Z = X**2 + Y**2
+    ax = contour(X, Y, Z, optimum=(0, 0))
+    assert ax is not None
+    plt.close("all")

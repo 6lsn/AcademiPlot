@@ -10,6 +10,8 @@ from acadp.charts._heatmap import heatmap
 from acadp.charts._box import boxplot
 from acadp.charts._violin import violinplot
 from acadp.charts._hist import histogram
+from acadp.charts._pareto import pareto
+from acadp.charts._contour import contour
 
 __all__ = ["lineplot", "barplot", "radar", "area", "stacked_bar", "scatter", "heatmap",
-           "boxplot", "violinplot", "histogram"]
+           "boxplot", "violinplot", "histogram", "pareto", "contour"]
