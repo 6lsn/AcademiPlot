@@ -8,10 +8,12 @@ from acadp.charts import (
 )
 from acadp._style import set_style, get_style, set_dpi, set_font, set_context
 from acadp._suggest import suggest
+from acadp._reviewer import review, review_dir, ReviewResult, BatchReport
 
 __all__ = [
     "lineplot", "barplot", "scatter", "heatmap", "boxplot",
     "violinplot", "histogram", "radar", "area", "stacked_bar",
     "set_style", "get_style", "set_dpi", "set_font", "set_context",
     "suggest",
+    "review", "review_dir", "ReviewResult", "BatchReport",
 ]
