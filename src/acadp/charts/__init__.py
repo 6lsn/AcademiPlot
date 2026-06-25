@@ -15,5 +15,10 @@ from acadp.charts._contour import contour
 from acadp.charts._waterfall import waterfall
 from acadp.charts._dumbbell import dumbbell
 
+from acadp.charts._bullet import bullet
+from acadp.charts._supply_demand import supply_demand
+from acadp.charts._small_multiples import small_multiples
+
 __all__ = ["lineplot", "barplot", "radar", "area", "stacked_bar", "scatter", "heatmap",
-           "boxplot", "violinplot", "histogram", "pareto", "contour", "waterfall", "dumbbell"]
+           "boxplot", "violinplot", "histogram", "pareto", "contour", "waterfall", "dumbbell",
+           "bullet", "supply_demand", "small_multiples"]
