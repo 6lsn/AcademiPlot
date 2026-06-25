@@ -11,7 +11,7 @@ from style import apply_paper_style, COLORS, palette, set_chart_title, style_axi
 
 apply_paper_style()
 # Override grid color to be slightly more visible (matches existing gallery)
-COLORS["grid"] = "#CBD5E1"
+COLORS["grid"] = "#D1D5DB"
 np.random.seed(42)
 
 # ========== 1. Bullet ==========
