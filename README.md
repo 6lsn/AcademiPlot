@@ -62,37 +62,43 @@ print(result.report.status)  # "pass"
 
 ## 📊 Gallery
 
-**[Basic](#basic-charts) • [Statistical](#statistical-charts) • [Advanced](#advanced-charts) • [3D](#3d-charts) • [Multi-panel](#multi-panel-figures)**
+### Single Charts / 单图
 
-### Basic Charts
+| Line / 折线图 | Bar / 柱状图 | Scatter / 散点图 |
+|:---:|:---:|:---:|
+| ![line](gallery/showcase/v2_chart_line.png) | ![bar](gallery/showcase/v2_chart_bar.png) | ![scatter](gallery/showcase/v2_chart_scatter.png) |
 
-| Line / 折线图 | Bar / 柱状图 | Scatter / 散点图 | Area / 面积图 |
-|:---:|:---:|:---:|:---:|
-| ![line](gallery/showcase/v2_chart_line.png) | ![bar](gallery/showcase/v2_chart_bar.png) | ![scatter](gallery/showcase/v2_chart_scatter.png) | ![area](gallery/showcase/v2_chart_area.png) |
+| Heatmap / 热力图 | Box Plot / 箱线图 | Radar / 雷达图 |
+|:---:|:---:|:---:|
+| ![heatmap](gallery/showcase/v2_chart_heatmap.png) | ![boxplot](gallery/showcase/v2_chart_boxplot.png) | ![radar](gallery/showcase/v2_chart_radar.png) |
 
-### Statistical Charts
+| Histogram / 直方图 | Stacked Bar / 堆叠柱状图 | Pareto / Pareto 前沿 |
+|:---:|:---:|:---:|
+| ![hist](gallery/showcase/v2_chart_histogram.png) | ![stacked](gallery/showcase/v2_chart_stacked_bar.png) | ![pareto](gallery/showcase/v2_chart_pareto.png) |
 
-| Heatmap / 热力图 | Box Plot / 箱线图 | Radar / 雷达图 | Histogram / 直方图 | Violinplot / 小提琴图 |
-|:---:|:---:|:---:|:---:|:---:|
-| ![heatmap](gallery/showcase/v2_chart_heatmap.png) | ![boxplot](gallery/showcase/v2_chart_boxplot.png) | ![radar](gallery/showcase/v2_chart_radar.png) | ![hist](gallery/showcase/v2_chart_histogram.png) | ![violin](gallery/showcase/v2_chart_violinplot.png) |
+| Contour / 等高线图 | Waterfall / 瀑布图 | Dumbbell / 前后对比图 |
+|:---:|:---:|:---:|
+| ![contour](gallery/showcase/v2_chart_contour.png) | ![waterfall](gallery/showcase/v2_chart_waterfall.png) | ![dumbbell](gallery/showcase/v2_chart_dumbbell.png) |
 
-### Advanced Charts
+| Violinplot / 小提琴图 | Area / 面积图 | Bullet / 子弹图 |
+|:---:|:---:|:---:|
+| ![violinplot](gallery/showcase/v2_chart_violinplot.png) | ![area](gallery/showcase/v2_chart_area.png) | ![bullet](gallery/showcase/v2_chart_bullet.png) |
 
-| Pareto / 前沿 | Contour / 等高线 | Waterfall / 瀑布图 | Dumbbell / 对比图 | Bullet / 子弹图 |
-|:---:|:---:|:---:|:---:|:---:|
-| ![pareto](gallery/showcase/v2_chart_pareto.png) | ![contour](gallery/showcase/v2_chart_contour.png) | ![waterfall](gallery/showcase/v2_chart_waterfall.png) | ![dumbbell](gallery/showcase/v2_chart_dumbbell.png) | ![bullet](gallery/showcase/v2_chart_bullet.png) |
+### 3D Charts / 三维图
 
-### 3D Charts
-
-| Surface / 曲面图 | Scatter / 散点图 | Bar / 柱状图 |
+| 3D Surface / 曲面图 | 3D Scatter / 散点图 | 3D Bar / 柱状图 |
 |:---:|:---:|:---:|
 | ![3d_surface](gallery/showcase/v2_chart_3d_surface.png) | ![3d_scatter](gallery/showcase/v2_chart_3d_scatter.png) | ![3d_bar](gallery/showcase/v2_chart_3d_bar.png) |
 
 ### Multi-panel Figures / 多面板组合图
 
-| 2-panel (1x2) | 3-panel (1x3) | 4-panel (2x2) | 6-panel (2x3) |
-|:---:|:---:|:---:|:---:|
-| ![2panel](gallery/showcase/v2_chart_multipanel_2panel.png) | ![3panel](gallery/showcase/v2_chart_multipanel_3panel.png) | ![4panel](gallery/showcase/multipanel_4panel.png) | ![6panel](gallery/showcase/multipanel_6panel.png) |
+| 2-panel (1x2) / 2 面板 | 3-panel (1x3) / 3 面板 |
+|:---:|:---:|
+| ![2panel](gallery/showcase/v2_chart_multipanel_2panel.png) | ![3panel](gallery/showcase/v2_chart_multipanel_3panel.png) |
+
+| 4-panel (2x2) / 4 面板 | 6-panel (2x3) / 6 面板 |
+|:---:|:---:|
+| ![4panel](gallery/showcase/multipanel_4panel.png) | ![6panel](gallery/showcase/multipanel_6panel.png) |
 
 ---
 
