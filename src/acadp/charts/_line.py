@@ -19,9 +19,13 @@ def lineplot(data=None, x=None, y=None, title=None, xlabel=None, ylabel=None,
     if data is not None and hasattr(data, "columns"):
         x_vals = data[x].values if x else data.iloc[:, 0].values
         y_vals = data[y].values if y else data.iloc[:, 1].values
+    elif data is not None and x is not None:
+        # lineplot(x, y) positional call
+        x_vals = np.asarray(data)
+        y_vals = np.asarray(x)
     else:
-        x_vals = np.asarray(x)
-        y_vals = np.asarray(y)
+        x_vals = np.asarray(x) if x is not None else np.arange(len(y) if hasattr(y, '__len__') else 0)
+        y_vals = np.asarray(y) if y is not None else np.array([])
 
     color = color or COLORS["blue_main"]
     ax.plot(x_vals, y_vals, color=color, linewidth=linewidth, marker=marker,
@@ -31,6 +35,6 @@ def lineplot(data=None, x=None, y=None, title=None, xlabel=None, ylabel=None,
     if ylabel: ax.set_ylabel(ylabel)
     elif data is not None and y: ax.set_ylabel(y)
     if title:
-        ax.set_title(title, fontsize=13, fontweight="bold", color=COLORS["text"], pad=10)
+        ax.set_title(title, fontsize=10, fontweight="bold", color="#333333", pad=6)
     finalize_plot(ax.figure)
     return ax

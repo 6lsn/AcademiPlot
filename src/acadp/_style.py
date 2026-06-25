@@ -37,12 +37,39 @@ _VALID_STYLES = {"nature", "science", "ieee"}
 _THEME_DEFAULTS = {
     "nature": {
         "font.family": ["sans-serif"],
-        "font.sans-serif": ["Microsoft YaHei", "SimHei", "DengXian", "Arial"],
+        "font.sans-serif": ["Microsoft YaHei", "SimHei", "DengXian", "Arial", "Helvetica"],
         "font.serif": ["Times New Roman", "Microsoft YaHei", "SimHei"],
-        "figure.dpi": 120,
+        "figure.dpi": 150,
         "savefig.dpi": 300,
-        "axes.titlesize": 13,
-        "axes.labelsize": 11,
+        "figure.figsize": (3.5, 2.8),          # Nature single-column
+        "axes.titlesize": 11,
+        "axes.titleweight": "bold",
+        "axes.labelsize": 9,
+        "axes.titlespace": 6,
+        "axes.labelspace": 4,
+        "xtick.labelsize": 8,
+        "ytick.labelsize": 8,
+        "legend.fontsize": 7.5,
+        "lines.linewidth": 1.5,
+        "lines.markersize": 4,
+        "axes.linewidth": 0.6,
+        "xtick.major.width": 0.5,
+        "ytick.major.width": 0.5,
+        "xtick.major.size": 3,
+        "ytick.major.size": 3,
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "axes.grid": False,
+        "axes.axisbelow": True,
+        "axes.edgecolor": "#333333",
+        "axes.labelcolor": "#333333",
+        "xtick.color": "#555555",
+        "ytick.color": "#555555",
+        "figure.facecolor": "#FFFFFF",
+        "axes.facecolor": "#FAFAFA",
+        "legend.frameon": False,
+        "savefig.bbox": "tight",
+        "savefig.pad_inches": 0.05,
     },
     "science": {
         "font.family": ["serif"],
@@ -50,8 +77,29 @@ _THEME_DEFAULTS = {
         "font.sans-serif": ["Microsoft YaHei", "SimHei", "DengXian", "Arial"],
         "figure.dpi": 150,
         "savefig.dpi": 300,
-        "axes.titlesize": 12,
-        "axes.labelsize": 10,
+        "figure.figsize": (3.5, 2.8),
+        "axes.titlesize": 10,
+        "axes.titleweight": "bold",
+        "axes.labelsize": 9,
+        "xtick.labelsize": 8,
+        "ytick.labelsize": 8,
+        "legend.fontsize": 7.5,
+        "lines.linewidth": 1.2,
+        "lines.markersize": 3.5,
+        "axes.linewidth": 0.5,
+        "axes.grid": False,
+        "axes.axisbelow": True,
+        "axes.edgecolor": "#000000",
+        "axes.labelcolor": "#000000",
+        "xtick.color": "#333333",
+        "ytick.color": "#333333",
+        "figure.facecolor": "#FFFFFF",
+        "axes.facecolor": "#FFFFFF",
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "legend.frameon": False,
+        "savefig.bbox": "tight",
+        "savefig.pad_inches": 0.05,
     },
     "ieee": {
         "font.family": ["serif"],
@@ -59,8 +107,27 @@ _THEME_DEFAULTS = {
         "font.sans-serif": ["Microsoft YaHei", "SimHei", "DengXian", "Arial"],
         "figure.dpi": 150,
         "savefig.dpi": 600,
-        "axes.titlesize": 11,
-        "axes.labelsize": 10,
+        "figure.figsize": (3.5, 2.6),          # IEEE single-column (narrower)
+        "axes.titlesize": 9,
+        "axes.titleweight": "bold",
+        "axes.labelsize": 8,
+        "xtick.labelsize": 7.5,
+        "ytick.labelsize": 7.5,
+        "legend.fontsize": 7,
+        "lines.linewidth": 1.0,
+        "lines.markersize": 3,
+        "axes.linewidth": 0.5,
+        "axes.grid": False,
+        "axes.axisbelow": True,
+        "axes.edgecolor": "#000000",
+        "axes.labelcolor": "#000000",
+        "figure.facecolor": "#FFFFFF",
+        "axes.facecolor": "#FFFFFF",
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "legend.frameon": False,
+        "savefig.bbox": "tight",
+        "savefig.pad_inches": 0.04,
     },
 }
 
@@ -70,26 +137,41 @@ _THEME_DEFAULTS = {
 # ============================================================
 
 COLORS = {
-    # primary
-    "blue_main":     "#3B6BA5",
-    "blue_light":    "#6B93C7",
-    "teal":          "#3D8C6A",
-    "teal_light":    "#6AAF8A",
-    "amber":         "#D4942B",
-    "crimson":       "#C44D4D",
-    "crimson_light": "#D97A6B",
-    "purple":        "#7C5E9E",
-    "purple_light":  "#A88FC4",
-    # neutrals
-    "grid":          "#E2E6ED",
-    "axis":          "#6B7280",
-    "text":          "#1F2937",
-    "muted":         "#9CA3AF",
-    "background":    "#FFFFFF",
-    # sequential ramps
-    "blue_seq":  ["#3B6BA5", "#5B8EC9", "#8AB3E0", "#B8D4EF"],
-    "green_seq": ["#3D8C6A", "#6AAF8A", "#9ED1B2", "#C8E6D8"],
-    "red_seq":   ["#C44D4D", "#D97A6B", "#ECA89A", "#F5D6D6"],
+    # ── Nature / top-journal primary palette ──
+    "navy":         "#003049",   # Nature navy — primary series
+    "coral":        "#E07A5F",   # Coral red — secondary series
+    "teal":         "#2A9D8F",   # Teal — tertiary
+    "amber":        "#E9C46A",   # Golden amber — highlight
+    "slate":        "#264653",   # Dark slate — reference / baseline
+    "lavender":     "#81B29A",   # Sage green — 4th series
+    "rose":         "#F4845F",   # Warm rose — 5th series
+    "sky":          "#457B9D",   # Steel blue — 6th series
+    "mauve":        "#B5838D",   # Dusty mauve — 7th series
+    "sand":         "#D4A373",   # Warm sand — 8th series
+
+    # ── Legacy aliases (backward compat) ──
+    "blue_main":    "#003049",
+    "blue_light":   "#457B9D",
+    "teal_light":   "#2A9D8F",
+    "crimson":      "#E07A5F",
+    "crimson_light":"#F4845F",
+    "purple":       "#81B29A",
+    "purple_light": "#B5838D",
+
+    # ── Neutrals ──
+    "grid":         "#E8E8E8",
+    "axis":         "#555555",
+    "text":         "#333333",
+    "muted":        "#999999",
+    "background":   "#FFFFFF",
+
+    # ── Sequential ramps ──
+    "blue_seq":   ["#003049", "#264653", "#457B9D", "#A8DADC"],
+    "green_seq":  ["#2A9D8F", "#40916C", "#76C893", "#B7E4C7"],
+    "red_seq":    ["#E07A5F", "#F4845F", "#F4A261", "#F4D35E"],
+
+    # ── Diverging ramp ──
+    "diverging_seq": ["#457B9D", "#A8DADC", "#F1FAEE", "#F4A261", "#E07A5F"],
 }
 
 # backward-compat aliases
@@ -98,27 +180,29 @@ for _old, _new in _OLD_MAP.items():
     if _old not in COLORS:
         COLORS[_old] = COLORS[_new]
 
-# Standard cycling palette
+# Standard cycling palette — high contrast, colorblind-friendly
 PALETTE = [
-    COLORS["blue_main"],
-    COLORS["amber"],
-    COLORS["teal"],
-    COLORS["crimson"],
-    COLORS["purple"],
-    COLORS["blue_light"],
-    COLORS["teal_light"],
-    COLORS["crimson_light"],
+    COLORS["navy"],       # deep navy
+    COLORS["coral"],      # warm coral
+    COLORS["teal"],       # teal
+    COLORS["amber"],      # golden amber
+    COLORS["lavender"],   # sage green
+    COLORS["sky"],        # steel blue
+    COLORS["mauve"],      # dusty mauve
+    COLORS["sand"],       # warm sand
+    COLORS["rose"],       # warm rose
+    COLORS["slate"],      # dark slate
 ]
 
 # Continuous colormaps
 PAPER_CMAP = LinearSegmentedColormap.from_list(
-    "paper_main",
-    [COLORS["blue_main"], COLORS["teal"], COLORS["amber"], COLORS["crimson"]],
+    "acadp_nature",
+    ["#003049", "#2A9D8F", "#E9C46A", "#E07A5F"],
 )
 
 DIVERGING_CMAP = LinearSegmentedColormap.from_list(
-    "paper_diverging",
-    [COLORS["blue_main"], "#F3F4F6", COLORS["crimson"]],
+    "acadp_diverging",
+    ["#457B9D", "#A8DADC", "#F1FAEE", "#F4A261", "#E07A5F"],
 )
 
 
@@ -176,37 +260,43 @@ def _apply_paper_style() -> dict:
     theme = _THEME_DEFAULTS[_CONFIG["style"]]
 
     rc = {
-        "font.sans-serif":      theme["font.sans-serif"],
-        "font.serif":           theme["font.serif"],
+        "font.sans-serif":      theme.get("font.sans-serif", _THEME_DEFAULTS["nature"]["font.sans-serif"]),
+        "font.serif":           theme.get("font.serif", _THEME_DEFAULTS["nature"]["font.serif"]),
         "font.family":          theme["font.family"],
         "axes.unicode_minus":   False,
         "figure.dpi":           theme["figure.dpi"],
+        "figure.figsize":       theme.get("figure.figsize", (3.5, 2.8)),
         "savefig.dpi":          _CONFIG["dpi"],
-        "savefig.bbox":         "tight",
-        "savefig.pad_inches":   0.06,
-        "figure.facecolor":     COLORS["background"],
-        "axes.facecolor":       COLORS["background"],
-        "axes.edgecolor":       COLORS["axis"],
-        "axes.labelcolor":      COLORS["text"],
+        "savefig.bbox":         theme.get("savefig.bbox", "tight"),
+        "savefig.pad_inches":   theme.get("savefig.pad_inches", 0.05),
+        "figure.facecolor":     theme.get("figure.facecolor", COLORS["background"]),
+        "axes.facecolor":       theme.get("axes.facecolor", COLORS["background"]),
+        "axes.edgecolor":       theme.get("axes.edgecolor", COLORS["axis"]),
+        "axes.labelcolor":      theme.get("axes.labelcolor", COLORS["text"]),
         "axes.labelsize":       theme["axes.labelsize"],
-        "axes.labelpad":        6,
+        "axes.labelpad":        theme.get("axes.labelspace", 4),
         "axes.titlesize":       theme["axes.titlesize"],
-        "axes.titleweight":     "bold",
-        "axes.titlepad":        10,
-        "axes.grid":            False,
+        "axes.titleweight":     theme.get("axes.titleweight", "bold"),
+        "axes.titlepad":        theme.get("axes.titlespace", 6),
+        "axes.linewidth":       theme.get("axes.linewidth", 0.6),
+        "axes.grid":            theme.get("axes.grid", False),
         "axes.axisbelow":       True,
-        "axes.spines.top":      False,
-        "axes.spines.right":    False,
-        "legend.frameon":       False,
-        "legend.fontsize":      9.5,
+        "axes.spines.top":      theme.get("axes.spines.top", False),
+        "axes.spines.right":    theme.get("axes.spines.right", False),
+        "legend.frameon":       theme.get("legend.frameon", False),
+        "legend.fontsize":      theme.get("legend.fontsize", 7.5),
         "legend.handlelength":  1.2,
         "legend.handletextpad": 0.6,
-        "xtick.color":          COLORS["axis"],
-        "ytick.color":          COLORS["axis"],
-        "xtick.labelsize":      9,
-        "ytick.labelsize":      9,
-        "lines.linewidth":      1.8,
-        "lines.markersize":     5,
+        "xtick.color":          theme.get("xtick.color", "#555555"),
+        "ytick.color":          theme.get("ytick.color", "#555555"),
+        "xtick.labelsize":      theme.get("xtick.labelsize", 8),
+        "ytick.labelsize":      theme.get("ytick.labelsize", 8),
+        "xtick.major.width":    theme.get("xtick.major.width", 0.5),
+        "ytick.major.width":    theme.get("ytick.major.width", 0.5),
+        "xtick.major.size":     theme.get("xtick.major.size", 3),
+        "ytick.major.size":     theme.get("ytick.major.size", 3),
+        "lines.linewidth":      theme.get("lines.linewidth", 1.5),
+        "lines.markersize":     theme.get("lines.markersize", 4),
         "patch.edgecolor":      COLORS["background"],
     }
 
@@ -236,17 +326,17 @@ def style_axis(ax, grid=False, grid_axis="y", legend_outside=False):
 
     if grid:
         ax.grid(True, axis=grid_axis, color=COLORS["grid"],
-                linestyle="-", linewidth=0.4, alpha=0.7)
+                linestyle="-", linewidth=0.3, alpha=0.5)
 
     for side in ("top", "right"):
         if side in ax.spines:
             ax.spines[side].set_visible(False)
     for side in ("left", "bottom"):
         if side in ax.spines:
-            ax.spines[side].set_color("#D1D5DB")
-            ax.spines[side].set_linewidth(0.7)
+            ax.spines[side].set_color("#CCCCCC")
+            ax.spines[side].set_linewidth(0.5)
 
-    ax.tick_params(colors=COLORS["axis"], labelsize=9)
+    ax.tick_params(colors="#555555", labelsize=8, length=3, width=0.5)
 
     handles, labels = ax.get_legend_handles_labels()
     labels = [l for l in labels if not l.startswith("_")]
@@ -254,15 +344,15 @@ def style_axis(ax, grid=False, grid_axis="y", legend_outside=False):
         if legend_outside:
             ax.legend(handles, labels, loc="upper center",
                       bbox_to_anchor=(0.5, 1.08), ncol=min(4, len(labels)),
-                      borderaxespad=0, frameon=False)
+                      borderaxespad=0, frameon=False, fontsize=7.5)
         else:
-            ax.legend(handles, labels, loc="upper right", frameon=False)
+            ax.legend(handles, labels, loc="upper right", frameon=False, fontsize=7.5)
 
 
 def set_chart_title(ax, title):
     _ensure_style()
-    ax.set_title(title, fontsize=13, fontweight="bold",
-                 color=COLORS["text"], y=1.06, pad=10)
+    ax.set_title(title, fontsize=10, fontweight="bold",
+                 color="#333333", y=1.04, pad=6)
 
 
 # ============================================================

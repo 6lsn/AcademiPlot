@@ -48,6 +48,6 @@ def histogram(data, bins=30, kde=False, title=None, xlabel=None, ylabel=None,
     if xlabel: ax.set_xlabel(xlabel)
     if ylabel: ax.set_ylabel(ylabel)
     if title:
-        ax.set_title(title, fontsize=13, fontweight="bold", color=COLORS["text"], pad=10)
+        ax.set_title(title, fontsize=10, fontweight="bold", color="#333333", pad=6)
     finalize_plot(ax.figure)
     return ax

@@ -28,6 +28,6 @@ def stacked_bar(categories, series_dict, title=None, xlabel=None, ylabel=None, a
     if ylabel:
         ax.set_ylabel(ylabel)
     if title:
-        ax.set_title(title, fontsize=13, fontweight="bold", color=COLORS["text"], pad=10)
+        ax.set_title(title, fontsize=10, fontweight="bold", color="#333333", pad=6)
     finalize_plot(ax.figure)
     return ax

@@ -19,6 +19,6 @@ def contour(X, Y, Z, optimum=None, title=None, xlabel=None, ylabel=None,
                    marker="*", edgecolors="white", linewidth=1.5, zorder=10)
     if xlabel: ax.set_xlabel(xlabel)
     if ylabel: ax.set_ylabel(ylabel)
-    if title: ax.set_title(title, fontsize=13, fontweight="bold", color=COLORS["text"], pad=10)
+    if title: ax.set_title(title, fontsize=10, fontweight="bold", color="#333333", pad=6)
     finalize_plot(ax.figure)
     return ax

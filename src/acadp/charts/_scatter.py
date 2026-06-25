@@ -34,6 +34,6 @@ def scatter(data=None, x=None, y=None, trend=False, title=None,
     if ylabel: ax.set_ylabel(ylabel)
     elif data is not None and y: ax.set_ylabel(y)
     if title:
-        ax.set_title(title, fontsize=13, fontweight="bold", color=COLORS["text"], pad=10)
+        ax.set_title(title, fontsize=10, fontweight="bold", color="#333333", pad=6)
     finalize_plot(ax.figure)
     return ax

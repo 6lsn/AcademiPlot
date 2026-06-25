@@ -16,6 +16,10 @@ def barplot(data=None, x=None, y=None, highlight=None, title=None,
     if data is not None and hasattr(data, "columns"):
         categories = data[x].tolist() if x else data.iloc[:, 0].tolist()
         values = data[y].tolist() if y else data.iloc[:, 1].tolist()
+    elif data is not None and x is not None:
+        # barplot(categories, values) positional call
+        categories = list(data)
+        values = list(x)
     else:
         categories = list(x) if x is not None else list(range(len(y) if hasattr(y, '__len__') else 0))
         values = list(y)
@@ -36,6 +40,6 @@ def barplot(data=None, x=None, y=None, highlight=None, title=None,
     if ylabel: ax.set_ylabel(ylabel)
     elif data is not None and y: ax.set_ylabel(y)
     if title:
-        ax.set_title(title, fontsize=13, fontweight="bold", color=COLORS["text"], pad=10)
+        ax.set_title(title, fontsize=10, fontweight="bold", color="#333333", pad=6)
     finalize_plot(ax.figure)
     return ax
