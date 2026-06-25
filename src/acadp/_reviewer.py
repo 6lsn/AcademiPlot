@@ -569,3 +569,101 @@ def review_dir(directory):
         elif r.status == "reject":
             report.reject_count += 1
     return report
+
+
+# ============================================================
+# CLI and file routing
+# ============================================================
+
+import argparse
+import shutil
+
+
+def _route_artifacts(metadata_path, review, output_dir):
+    """Copy PNG and metadata to status-specific directory."""
+    metadata_path = Path(metadata_path)
+    status_dir = output_dir / STATUS_DIR.get(review.status, "manual_review")
+    status_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(metadata_path, status_dir / metadata_path.name)
+    png_path = metadata_path.with_name(
+        metadata_path.name.replace(".metadata.json", ".png")
+    )
+    if png_path.exists():
+        shutil.copy2(png_path, status_dir / png_path.name)
+
+
+def _write_reports(report, output_dir):
+    """Write review_report.json and review_report.md."""
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "review_report.json").write_text(
+        json.dumps({
+            "summary": {
+                "total": report.total,
+                "pass": report.pass_count,
+                "revise": report.revise_count,
+                "manual_review": report.manual_count,
+                "reject": report.reject_count,
+            },
+            "reviews": [
+                {
+                    "figure": r.figure,
+                    "overall_status": r.status,
+                    "score": r.score,
+                    "scores": r.scores,
+                    "major_issues": r.major_issues,
+                    "minor_issues": r.minor_issues,
+                    "recommended_action": r.recommended_action,
+                    "suggested_caption": r.suggested_caption,
+                    "suggested_plot_type": r.suggested_plot_type,
+                }
+                for r in report.results
+            ],
+        }, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    (output_dir / "review_report.md").write_text(report.to_markdown(), encoding="utf-8")
+
+
+def review_cli(metadata_dir, output_dir, route_files=True):
+    """Review all metadata files and optionally route artifacts.
+
+    Parameters
+    ----------
+    metadata_dir : str or Path
+        Directory containing *.metadata.json files.
+    output_dir : str or Path
+        Directory for review reports and routed figures.
+    route_files : bool
+        If True, copy files to status-specific subdirectories.
+
+    Returns
+    -------
+    BatchReport
+    """
+    metadata_dir = Path(metadata_dir)
+    output_dir = Path(output_dir)
+    report = review_dir(metadata_dir)
+    if route_files:
+        for meta_path in sorted(metadata_dir.glob("*.metadata.json")):
+            r = review(meta_path)
+            _route_artifacts(meta_path, r, output_dir)
+    _write_reports(report, output_dir)
+    return report
+
+
+def main():
+    """CLI entry point for acadp-review."""
+    parser = argparse.ArgumentParser(description="Review generated chart metadata.")
+    parser.add_argument("--metadata-dir", required=True, help="Directory with *.metadata.json files.")
+    parser.add_argument("--output-dir", required=True, help="Directory for review reports.")
+    parser.add_argument("--no-route", action="store_true", help="Skip file routing.")
+    args = parser.parse_args()
+    report = review_cli(args.metadata_dir, args.output_dir, route_files=not args.no_route)
+    print(json.dumps({
+        "total": report.total,
+        "pass": report.pass_count,
+        "revise": report.revise_count,
+        "manual_review": report.manual_count,
+        "reject": report.reject_count,
+    }, ensure_ascii=False))
