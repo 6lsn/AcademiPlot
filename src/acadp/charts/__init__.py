@@ -12,6 +12,8 @@ from acadp.charts._violin import violinplot
 from acadp.charts._hist import histogram
 from acadp.charts._pareto import pareto
 from acadp.charts._contour import contour
+from acadp.charts._waterfall import waterfall
+from acadp.charts._dumbbell import dumbbell
 
 __all__ = ["lineplot", "barplot", "radar", "area", "stacked_bar", "scatter", "heatmap",
-           "boxplot", "violinplot", "histogram", "pareto", "contour"]
+           "boxplot", "violinplot", "histogram", "pareto", "contour", "waterfall", "dumbbell"]

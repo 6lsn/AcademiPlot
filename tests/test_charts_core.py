@@ -186,3 +186,21 @@ def test_contour_returns_axes():
     ax = contour(X, Y, Z, optimum=(0, 0))
     assert ax is not None
     plt.close("all")
+
+
+# ---- waterfall ----------------------------------------------------------------
+
+def test_waterfall_returns_axes():
+    from acadp.charts._waterfall import waterfall
+    ax = waterfall(["Start", "A", "B", "C", "End"], [100, 20, -15, 30, 135])
+    assert ax is not None
+    plt.close("all")
+
+
+# ---- dumbbell -----------------------------------------------------------------
+
+def test_dumbbell_returns_axes():
+    from acadp.charts._dumbbell import dumbbell
+    ax = dumbbell([10, 20, 30], [15, 25, 28], ["A", "B", "C"])
+    assert ax is not None
+    plt.close("all")
