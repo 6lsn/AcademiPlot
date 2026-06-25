@@ -491,11 +491,11 @@ def annotate_extreme(ax, x_values, y_values, mode="max", text=None,
     y_values = np.asarray(y_values)
     if mode == "max":
         idx = np.nanargmax(y_values)
-        default_text = f"Peak: {y_values[idx]:.2f}"
+        default_text = f"最高：{y_values[idx]:.2f}"
         color = color or COLORS["amber"]
     elif mode == "min":
         idx = np.nanargmin(y_values)
-        default_text = f"Low: {y_values[idx]:.2f}"
+        default_text = f"最低：{y_values[idx]:.2f}"
         color = color or COLORS["crimson"]
     else:
         raise ValueError("mode must be 'max' or 'min'")
