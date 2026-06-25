@@ -29,7 +29,7 @@
 - **Nature/Science-grade styles / Nature/Science 级样式** — not just colors, but complete academic figure standards / 不只是换颜色，而是完整的学术图表规范
 - **Smart suggest / 智能推荐** — describe your goal, it picks the best chart type / 描述你想展示的内容，自动选择最佳图表类型
 - **Quality review / 质量审查** — 6-dimension scoring checks if your figure meets academic standards / 6 维度评分，检查图表是否符合学术标准
-- **14 chart types / 14 种图表** — from line plots to Pareto frontiers / 从折线图到 Pareto 前沿
+- **17 chart types / 17 种图表** — from line plots to bullet charts & supply-demand balance / 从折线图到子弹图与供需平衡图
 
 ---
 
@@ -76,6 +76,10 @@ print(result.report.status)  # "pass"
 | Contour / 等高线图 | Waterfall / 瀑布图 | Dumbbell / 前后对比图 |
 |:---:|:---:|:---:|
 | ![contour](gallery/showcase/contour.png) | ![waterfall](gallery/showcase/waterfall.png) | ![dumbbell](gallery/showcase/dumbbell.png) |
+
+| Bullet / 子弹图 | Supply-Demand / 供需平衡 | Small Multiples / 小多图 |
+|:---:|:---:|:---:|
+| ![bullet](gallery/showcase/bullet.png) | ![supply_demand](gallery/showcase/supply_demand.png) | ![small_multiples](gallery/showcase/small_multiples.png) |
 
 ### Multi-panel Figures / 多面板组合图
 
@@ -138,6 +142,24 @@ ax = acadp.waterfall(["基础","材料+","人工+","节省−","最终"],
 # Dumbbell (before/after) / 前后对比图
 ax = acadp.dumbbell([72, 65, 80], [88, 82, 85], ["方法A","方法B","方法C"],
                      title="优化前后对比")
+
+# Bullet (threshold compliance) / 子弹图（达标状态）
+ax = acadp.bullet(categories=["效率", "稳定性", "成本"],
+                  actual=[85, 72, 91], threshold=[80, 75, 88],
+                  directions=[">=", ">=", ">="], title="指标达标状态")
+
+# Supply-demand balance / 供需平衡图
+fig = acadp.supply_demand(
+    time=np.arange(24),
+    supply_components={"风电": wind, "光伏": solar},
+    demand=demand, title="供需匹配与净差"
+)
+
+# Small multiples (sensitivity) / 小多图（敏感性分析）
+fig = acadp.small_multiples([
+    {"name": "温度", "x": [20,25,30,35], "y": [10,15,12,8]},
+    {"name": "湿度", "x": [30,40,50,60], "y": [20,25,22,18]},
+], title="多因素敏感性分析")
 ```
 
 ### 2. Smart Suggest / 智能推荐
@@ -218,6 +240,16 @@ acadp.set_style("ieee")
 acadp.set_dpi(600)         # high-res output / 高分辨率输出
 acadp.set_font("SimHei")   # Chinese font / 中文字体
 acadp.set_context("paper") # paper / presentation / poster
+```
+
+### 6. CLI Review / 命令行审查
+
+```bash
+# Batch review figures / 批量审查图表
+acadp-review --metadata-dir figures/ --output-dir review_output/
+
+# Skip file routing / 跳过文件路由
+acadp-review --metadata-dir figures/ --output-dir review_output/ --no-route
 ```
 
 ### 6. Data Input / 数据输入格式
@@ -301,6 +333,9 @@ ax.figure.savefig("图1.svg", bbox_inches="tight")
 | `contour()` | Contour plot / 等高线图 | `X, Y, Z, optimum` |
 | `waterfall()` | Waterfall / 瀑布图 | `categories, values` |
 | `dumbbell()` | Before/after / 前后对比图 | `before, after, labels` |
+| `bullet()` | Threshold compliance / 子弹图 | `categories, actual, threshold` |
+| `supply_demand()` | Supply-demand balance / 供需平衡 | `time, supply_components, demand` |
+| `small_multiples()` | Multi-factor sensitivity / 小多图 | `factors, y_label` |
 
 ### Smart Functions / 智能函数
 
@@ -325,7 +360,8 @@ ax.figure.savefig("图1.svg", bbox_inches="tight")
 | Smart selection / 智能选图 | no / 无 | no / 无 | yes / 有 |
 | Quality review / 质量审查 | no / 无 | no / 无 | 6-dimension / 6 维度 |
 | One-line API / 一行 API | no / 无 | yes / 有 | yes / 有 |
-| Pareto/Contour/Waterfall | manual / 手动 | no / 无 | yes / 有 |
+| 17 chart types / 17 种图表 | manual / 手动 | 部分 | all built-in / 全内置 |
+| CLI review / 命令行审查 | no / 无 | no / 无 | yes / 有 |
 | Chinese labels / 中文标签 | manual / 手动 | manual / 手动 | built-in / 内置 |
 | Multi-panel / 多面板图 | manual / 手动 | no / 无 | yes / 有 |
 
