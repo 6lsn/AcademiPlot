@@ -1,6 +1,6 @@
 """AcademiPlot — publication-ready academic figures in one line."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from acadp.charts import (
     lineplot, barplot, scatter, heatmap, boxplot,
