@@ -7,9 +7,11 @@ from acadp.charts import (
     violinplot, histogram, radar, area, stacked_bar,
 )
 from acadp._style import set_style, get_style, set_dpi, set_font, set_context
+from acadp._suggest import suggest
 
 __all__ = [
     "lineplot", "barplot", "scatter", "heatmap", "boxplot",
     "violinplot", "histogram", "radar", "area", "stacked_bar",
     "set_style", "get_style", "set_dpi", "set_font", "set_context",
+    "suggest",
 ]
